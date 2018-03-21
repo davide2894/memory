@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/game.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        
+        <header>
+            <h1 class="header__title">Memory Game</h1>
+            <p class="header__p">Keep your brain sharp</p>
+        </header>
+        
+        <main>
+            <section class="bar">
+                <div class="bar__score">
+                    <span class="bar__span">Moves:</span>
+                    <span class="bar__n">0</span>
+                </div>
+                <div class="bar__time">00:00</div>
+                <div class="bar__restart">restart</div>
+            </section>
+            
+            <section class="cards">
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <span>Front</span>
+                        </div>
+                        <div class="card__back">
+                            <span>Back</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+    </div>
+</body>
+
+</html>

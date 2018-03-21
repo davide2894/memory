@@ -1,0 +1,74 @@
+/*
+    Reset
+*/
+
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+body {
+    //background: #ffbfbf;
+}
+
+.flip-container {
+    perspective: 1000px;
+}
+
+/* flip card on hover */
+
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container,
+.card__front,
+.card__back {
+    width: 320px;
+    height: 480px;
+}
+
+/* flip speed */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide card__back during the swap */
+.card__front,
+.card__back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* place card__front above card__back */
+.card__front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+    background: pink;
+}
+
+/* hide card__back since the beginning */
+.card__back {
+    transform: rotateY(180deg);
+    background: brown;
+}
