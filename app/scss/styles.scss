@@ -24,29 +24,66 @@ body {
     //background: #ffbfbf;
 }
 
+
+/*
+    -----------------------------------------
+    -----------------------------------------
+                    BAR
+    -----------------------------------------
+    -----------------------------------------
+*/
+.bar__restart {
+    padding: 1em;
+}
+.bar__restart:hover {
+    cursor: pointer;
+}
+.fa-star {
+    color: #333;
+}
+
+
+
+/*
+    -----------------------------------------
+    -----------------------------------------
+                    CARDS
+    -----------------------------------------
+    -----------------------------------------
+*/
+.cards {
+    border: 1px solid black;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+}
 .flip-container {
     perspective: 1000px;
+    border: 2px solid black;
+    margin: 0;
 }
 
 /* flip card on hover */
-
-.flip-container:hover .flipper,
-.flip-container.hover .flipper {
-    transform: rotateY(180deg);
+.flip-container:hover {
+    cursor: pointer;
 }
+.flip-container.hover .flipper{
+    transform: rotateY(180deg);
+} 
 
 .flip-container,
 .card__front,
 .card__back {
-    width: 320px;
-    height: 480px;
+    width: 150px;
+    height: 150px;
+    border-radius: 6px;
 }
 
 /* flip speed */
 .flipper {
     transition: 0.6s;
     transform-style: preserve-3d;
-
     position: relative;
 }
 
@@ -66,7 +103,13 @@ body {
     transform: rotateY(0deg);
     background: pink;
 }
-
+.card__front span,
+.card__back span {
+    font-size: 2em;
+}
+.card__back span {
+    color: #fff;
+}
 /* hide card__back since the beginning */
 .card__back {
     transform: rotateY(180deg);
