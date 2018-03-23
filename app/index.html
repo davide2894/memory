@@ -34,19 +34,20 @@
                         00:00:00
                    </time>
                 </div>
-                <button class="bar__restart" onclick="shuffle()">
+                <button class="bar__restart" id="restart" onclick="restart()">
                     Restart
                 </button>
             </section>
 
             <section class="cards" id="container">
+               
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="1">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>1</span>
+                            <span class="span--hide">1</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>1</span>
                         </div>
                     </div>
                 </div>
@@ -54,10 +55,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="2">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>2</span>
+                            <span class="span--hide">1</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>1</span>
                         </div>
                     </div>
                 </div>
@@ -65,10 +66,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="3">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>3</span>
+                            <span class="span--hide">2</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>2</span>
                         </div>
                     </div>
                 </div>
@@ -76,10 +77,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="4">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>4</span>
+                            <span class="span--hide">2</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>2</span>
                         </div>
                     </div>
                 </div>
@@ -87,10 +88,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="5">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>5</span>
+                            <span  class="span--hide">3</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>3</span>
                         </div>
                     </div>
                 </div>
@@ -98,10 +99,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="6">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>6</span>
+                            <span class="span--hide">3</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>3</span>
                         </div>
                     </div>
                 </div>
@@ -109,10 +110,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="7">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>7</span>
+                            <span class="span--hide">4</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>4</span>
                         </div>
                     </div>
                 </div>
@@ -120,10 +121,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="8">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>8</span>
+                            <span class="span--hide">4</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>4</span>
                         </div>
                     </div>
                 </div>
@@ -131,10 +132,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="9">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>9</span>
+                            <span class="span--hide"5</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>5</span>
                         </div>
                     </div>
                 </div>
@@ -142,10 +143,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="10">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>10</span>
+                            <span class="span--hide">5</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>5</span>
                         </div>
                     </div>
                 </div>
@@ -153,10 +154,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="11">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>11</span>
+                            <span class="span--hide">6</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>6</span>
                         </div>
                     </div>
                 </div>
@@ -164,10 +165,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="12">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>12</span>
+                            <span class="span--hide">6</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>6</span>
                         </div>
                     </div>
                 </div>
@@ -175,10 +176,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="13">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>13</span>
+                            <span class="span--hide">7</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>7</span>
                         </div>
                     </div>
                 </div>
@@ -186,10 +187,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="14">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>14</span>
+                            <span class="span--hide">7</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>7</span>
                         </div>
                     </div>
                 </div>
@@ -197,10 +198,10 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="15">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>15</span>
+                            <span class="span--hide">8</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>8</span>
                         </div>
                     </div>
                 </div>
@@ -208,14 +209,13 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="16">
                     <div class="flipper">
                         <div class="card__front">
-                            <span>16</span>
+                            <span class="span--hide">8</span>
                         </div>
                         <div class="card__back">
-                            <span>Symbol </span>
+                            <span>8</span>
                         </div>
                     </div>
                 </div>
-
 
             </section>
 

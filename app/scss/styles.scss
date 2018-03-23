@@ -70,7 +70,10 @@ body {
 }
 .flip-container.hover .flipper{
     transform: rotateY(180deg);
-} 
+}
+/* .flip-container.hover-back .flipper {
+    transform: rotateY(-180deg);
+} */
 
 .flip-container,
 .card__front,
@@ -114,4 +117,8 @@ body {
 .card__back {
     transform: rotateY(180deg);
     background: brown;
+}
+
+.span--hide {
+    display: none;
 }

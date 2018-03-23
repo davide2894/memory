@@ -8,10 +8,13 @@ v5. use css Grid to display cards as a 4x4 grid (first raw use of Grid)
 v6. add card shuffling on page load
 v7. add move counter
 v8. add stars feature. It's dependent on move counter's value
-9. add timer
-10. add restart button
-11. add match logic
-12. add win condition
+v9. add timer
+v10. add restart button
+v11. add single match logic
+12. extend it to all the cards
+12. add win conditions
+
+* clean code
 
 ## Day 1 - Monday 19 March 2018
 9:37 am - calm down. While it feels the most huge project I encountered so far, all I need is to divide and conquer. As Udacity says: you don't build a house all at once, but brick by brick. So.
@@ -122,3 +125,49 @@ Next is timer. I don't have a freaking idea of how to make a timer in JS, the on
 3:18pm -  I found a fiddle I can be inspired from, so.
 
 4:48pm - I added the stopwatch feature, it should work but it doesn't. My head is smoking tho. It's best to leave it for today and come back tomorrow. 
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+## Day 3 - Fri 23/3/18
+5:55am - Good morning. I knew it! It doesn't matter how many hours. What matters is quality. 
+Next is restart button. Ok. So this should be an icon (now a button) that when clicked resets game. Which means that, on click, it should do the following:
+- set move counter = 0;
+- fill all three stars to color #333;
+- set timer to 0;
+- shuffle cards;
+
+6:19am - implemented restart button successfully.
+Next is single match logic. So for a match to happen the cards should have the same symbol. For example, they have the same text-content or, for images, they have the same class or something like that. Ids are out of questions because they're unique to an element. 
+So what could I use for imgs? For imgs I could use write a short paragraph with numbers from 1-8 (identifying the pairs). Then I could display: hide them and use JS this way:
+- track a click counter 
+- if click counter === 2 
+    -> check clicked cards' value: if they have the same string:
+        - there's a match
+        - console.log success msg
+    -> else: 
+        - no match
+        - cover cards
+
+I'll add imgs during styling. For now, I'll use numbers to show and numbers to hide, so that I can test the logic. 
+
+6:42am - I noticed a bug in the shuffle fn: not all numbers are given back in the grid, some are duplicated.
+
+6:57am - that is solved but another problem now, for the restart buttons: I should find a way to check if a card is flipped. If so, the card should get covered again.
+
+7:16am - I set a var isFlipped that becomes true when a card flips. There's an issue because I didn't set a condition that tells the computer how to recognize when a card shows the back or the face.
+
+8:22pm - handled it. Instead of isFlipped I checked if current card had 'hover' class, if so I just toggled it back.
+So I should go back to single match logic again.
+
+3:01pm - at 9am I procrastinated for the rest of the morning (f2p). Nonetheless I worked out as scheduled and ate a nutritious lunch. I handled the single match. 
+There's more to handle tho:
+- I should disable clicking on a card if it has already been clicked
+- if there's a match:
+    * those card should not be clickable anymore
+    * they should remain flipped
+
+So how can I forbid multiple clicks on a card?
+
+For tomorrow: handle flip and match bug

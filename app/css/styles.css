@@ -58,6 +58,9 @@ table {
 .flip-container.hover .flipper {
   transform: rotateY(180deg); }
 
+/* .flip-container.hover-back .flipper {
+    transform: rotateY(-180deg);
+} */
 .flip-container,
 .card__front,
 .card__back {
@@ -97,3 +100,6 @@ table {
 .card__back {
   transform: rotateY(180deg);
   background: brown; }
+
+.span--hide {
+  display: none; }
