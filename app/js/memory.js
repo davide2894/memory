@@ -6,8 +6,7 @@
     })
 */
 
-// 4. use es6 for..of loop to extend flip animation
-//    to all the cards
+// define variables
 const container = document.getElementById('container');
 //restartBtn = document.getElementById('restart');
 const cards = container.getElementsByClassName('flip-container');
@@ -21,79 +20,128 @@ var moveCounter = document.getElementById('move-counter'),
     time,
     clickCounter = 0,
     cardOne = "",
-    cardOneId = "",
+    cardOneID = "",
     cardOneSpan = "",
     cardTwo = "",
-    cardTwoId = "",
+    cardTwoID = "",
     cardTwoSpan = "",
-    disabled = false;
+    matchedCards = [],
+    gameStarted = false;
 
-function flip(element) {
-    element.classList.toggle('hover');
-}
 
 for (let card of cards) {
     card.addEventListener('click', function () {
+                
+        if(!gameStarted){
+            startGame();
+            
+            console.log("gameStarted after startGame() is invoked = " + gameStarted);
+        }
+        
+        if (matchedCards.includes(card.id)) {
 
-            // increase click count
+            //console.log("this card is already matched", clickCounter);
+
+        } else {
             clickCounter++;
 
-            // handle single match
             if (clickCounter === 1) {
-                // get 1st click's data
-                cardOneSpan = this.querySelector('span').textContent;
-                cardOneId = card.id;
-                cardOne = card;
-                alert("cardOneId = " + cardOneId);
-                flip(cardOne);
+
+                //console.log("clickCounter = " + clickCounter);
+
+                getCardOneInfo(card);
+                //console.log(cardOneSpan, cardOneID, card.classList);
+                flipCard(card);
+
+                //console.log("card1 opened");
 
             } else if (clickCounter === 2) {
-                // get 2nd click's data
-                cardTwoSpan = card.querySelector('span').textContent;
-                cardTwoId = card.id;
-                cardTwo = card;
-                alert("cardTwoId = " + cardTwoId);
 
-                if (cardOneId === cardTwoId) {
-                    alert("elseif 1");
-                    //do nothing
+                //console.log("clickCounter = " + clickCounter);
+
+
+                getCardTwoInfo(card);
+                //console.log(cardTwoSpan, cardTwoID);
+                // if user clicks same card
+                if (cardOneID === cardTwoID) {
                     clickCounter = 1;
-                } else if (cardOneId !== cardTwoId) {
+
+                    //console.log("clicked same card");
+
+                } else {
+
+                    flipCard(card);
+
+                    //console.log('card2 opened');
+
+                    trackScore();
+
+                    // if there's a match
                     if (cardOneSpan === cardTwoSpan) {
+
+                        //console.log('there is a match');
+
+                        matchedCards.push(cardOneID);
+                        matchedCards.push(cardTwoID);
+
+                        // check win
+                        if(matchedCards.length === 2){
+                            setTimeout(function(){
+                                alert('you win1!');
+                            }, 500);
+                        }
+                        
+
+                    } else if (cardOneSpan !== cardTwoSpan) {
+
+                        //console.log('retry');
+
                         setTimeout(function () {
-                            // flip cards back
-                            //flip(cardOne);
-                            flip(cardTwo);
-                        }, 500);
-                    } else {
-                        setTimeout(function () {
-                            // flip cards back
-                            flip(cardOne);
-                            flip(cardTwo);
+                            flipCardBack(cardOne);
+                            flipCardBack(cardTwo);
                         }, 500);
                     }
+                    clickCounter = 0;
                 }
-            } // end else if statement
-
-        // increase counter by 1;
-        let n = parseInt(moveCounter.textContent); n += 1; moveCounter.textContent = n.toString();
-
-        // handle stars 
-        if (n > 10 && n <= 15) {
-            star3.classList.replace('fa-star', 'fa-star-o');
-        } else if (n > 15) {
-            star2.classList.replace('fa-star', 'fa-star-o');
+            }
         }
-
-        //console.log(clickCounter);
     })
 }
 
+function flipCard(element) {
+    element.classList.add('hover');
+}
 
+function flipCardBack(element) {
+    element.classList.remove('hover');
+}
+
+function getCardOneInfo(element) {
+    cardOneSpan = element.querySelector('span').textContent;
+    cardOneID = element.id;
+    cardOne = element;
+}
+
+function getCardTwoInfo(element) {
+    cardTwoSpan = element.querySelector('span').textContent;
+    cardTwoID = element.id;
+    cardTwo = element;
+}
+
+function trackScore() {
+    let moveCount = parseInt(moveCounter.textContent);
+    moveCount++;
+    moveCounter.textContent = moveCount.toString();
+
+    if (moveCount > 10 && moveCount <= 15) {
+        star3.classList.replace('fa-star', 'fa-star-o');
+    } else if (moveCount > 15) {
+        star2.classList.replace('fa-star', 'fa-star-o');
+    }
+}
 
 // 6. implement shuffle feature
-
-function shuffle() {
+function shuffleCards() {
     // convert Node list to array
     let arrayOfCards = nodeListToArray(cards);
 
@@ -134,8 +182,6 @@ function shuffleArray(array) {
     return array;
 }
 
-shuffle();
-
 // 9. add timer feature
 function addTime() {
     seconds++;
@@ -146,8 +192,7 @@ function addTime() {
             minutes = 0;
         }
     }
-    //console.log(minutes, seconds);
-
+    
     // handle displyed time format
     // timer.textContent = hours + ":" + minutes + ":" + seconds;
     timer.textContent =
@@ -165,8 +210,6 @@ function watchTime() {
     time = setTimeout(addTime, 1000);
 }
 
-watchTime();
-
 /* 
    10. add restart button, that on click:
    - sets move counter = 0;
@@ -175,8 +218,16 @@ watchTime();
    - shuffles cards;
    <button class="bar__restart" id="restart" onclick="restart()">
 */
+
+function startGame() {
+    gameStarted = true;
+    watchTime();
+}
+
 function restart() {
 
+    timer.textContent = "00:00:00";
+    
     seconds = 0;
     minutes = 0;
     hours = 0;
@@ -188,26 +239,17 @@ function restart() {
 
     for (let card of cards) {
         if (card.classList.contains('hover')) {
-            card.classList.toggle('hover');
+            card.classList.remove('hover');
         }
     }
 
-    shuffle();
+    shuffleCards();
+    
+    gameStarted = false;
+    
+    console.log("gameStarted after restart btn is clicked = " + gameStarted);
+    
+    // TODO: stop timer;
+    
+    // TODO: close 
 }
-
-
-
-
-
-
-
-
-
-//disabled = true;
-//clickCounter = 0;
-//cardOneSpan = "";
-//cardOneId = "";
-//cardOne = "";
-//cardTwoSpan = "";
-//cardTwoId = "";
-//cardTwo = "";

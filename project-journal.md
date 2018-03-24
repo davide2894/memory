@@ -11,8 +11,8 @@ v8. add stars feature. It's dependent on move counter's value
 v9. add timer
 v10. add restart button
 v11. add single match logic
-12. extend it to all the cards
-12. add win conditions
+12. add win conditions (idea: a matchCout var that if === 8 triggers end of game)
+13. win popup (stop timer)
 
 * clean code
 
@@ -171,3 +171,46 @@ There's more to handle tho:
 So how can I forbid multiple clicks on a card?
 
 For tomorrow: handle flip and match bug
+
+//////////////////////////////////////////////////////////////
+## Day 4 Sat 24/3/18
+5:35pm - good morning. I should handle this. 
+
+I have a hint: I could add the showed cards that match to an array of matched cards. Like, at each click:
+
+* IF matched cards array contains a card with same id as the one clicked: don't do anything
+* ELSE
+    * if clickCounter === 1:
+        * flip (add .hover class to) card
+        * get card data
+    * esle if clickCocunter === 2: 
+        * if cardOneID === cardTwoID:
+            - clicked same card -> clickCounter = 1
+        * else (two different IDs)
+            - flip (add .hover class to) card
+            - get card data
+            * if cardOneSpan === cardTwoSpan (there's a match):
+                - add cardOneID and cardTwoID to matched cards array
+            * else: 
+                - remove .hover class from cards
+                        
+Then I can remove the .hover class fron them. Also, instead of using toggle, I should probably use add and remove, because with toggle I can't have a full control on cards.
+
+9:36pm - it seems it works. Now I should fix the move counter to consider a move each second click.
+
+9:49pm - handled that. Now I should hadle win conditions. The things I can think of are either check if array has all ids, or use a match counter. Well I can't think simple, can I?
+I could just check if matchedCards.length === 16.
+
+10:19pm - ok, now the thing to do is to handle what happens when there's a win. 
+
+10:58pm - so when usr wins, I show a modal box. For now the modal box would have:
+    * a brief msg
+    * a btn: if user clicks on btn:
+        - restart game
+I just realized: timer should start only when usr clicks card for the first time.
+
+11:48am - ok. 
+- BUG 1: Now the problem is another p.s.: when I click on restart button, timer doesn't stop starts again - even though startGame() function was not invoked. I should investigate when I come back.
+- BUG 2: when usr wins game, timer goes 1s faster. 
+
+bug1-- the problem lies in the first gameStarted check. Remind this when you come back later in the afternoon. 

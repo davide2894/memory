@@ -101,5 +101,6 @@ table {
   transform: rotateY(180deg);
   background: brown; }
 
-.span--hide {
-  display: none; }
+/* .span--hide {
+    display: none;
+} */
