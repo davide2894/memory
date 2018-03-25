@@ -16,6 +16,12 @@ table {
   border-spacing: 0; }
 
 /*-----------------------------------------------------------------------------*/
+.wrapper {
+  margin: 0 1em; }
+
+.header__title {
+  font-size: 9em; }
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -31,6 +37,38 @@ table {
 
 .fa-star {
   color: #333; }
+
+/*
+    -----------------------------------------
+    -----------------------------------------
+                    MODAL
+    -----------------------------------------
+    -----------------------------------------
+*/
+.modal {
+  display: none;
+  z-index: 3;
+  /* stay on top */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* full width */
+  height: 100%;
+  /* full height */
+  background-color: #ddd;
+  outline: 2px solid #333;
+  /* TODO: 
+     * - enable scrolling
+     */ }
+
+.modal__content {
+  width: 70%;
+  padding: 1em; }
+
+.modal__btn {
+  padding: .5em;
+  font: 2em; }
 
 /*
     -----------------------------------------

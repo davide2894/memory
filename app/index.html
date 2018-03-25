@@ -20,7 +20,7 @@
         <main>
             <section class="bar">
                 <div class="bar__score">
-                    <span class="bar__span" >Moves:</span>
+                    <span class="bar__span">Moves:</span>
                     <span class="bar__n" id="move-counter">0</span>
                     <div class="bar__stars">
                         <i class="fa fa-star" id="star-1">
@@ -29,8 +29,8 @@
                         <i class="fa fa-star" id="star-3"></i>
                     </div>
                 </div>
-                <div class="bar__time" id="timer">
-                   <time>
+                <div class="bar__time" id="displayed-time">
+                    <time>
                         00:00:00
                    </time>
                 </div>
@@ -39,8 +39,24 @@
                 </button>
             </section>
 
+            <!-- Modal box to display when user wins the game -->
+
+            <section class="modal" id="win-modal">
+                <div class="modal__content">
+                    <span class="modal__x" id="modal-x">&times;</span>
+                    <h1 class="modal__header">Congratulations!</h1>
+                    <p class="modal__text">
+                        You won in <span class="user__time" id="user-time">__</span> with <span class="user__moves" id="user-moves">__</span> moves and <span class="user__stars" id="user-stars">__</span> stars.<br>
+                        score string goes here --> <span class="user__final-score" id="user-final-score">__</span>    
+                    </p>
+
+                    <button class="modal__btn" id="modal-btn">Play again!</button>
+                </div>
+
+            </section>
+
             <section class="cards" id="container">
-               
+
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="1">
                     <div class="flipper">
                         <div class="card__front">
@@ -88,7 +104,7 @@
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="5">
                     <div class="flipper">
                         <div class="card__front">
-                            <span  class="span--hide">3</span>
+                            <span class="span--hide">3</span>
                         </div>
                         <div class="card__back">
                             <span>3</span>

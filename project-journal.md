@@ -11,9 +11,17 @@ v8. add stars feature. It's dependent on move counter's value
 v9. add timer
 v10. add restart button
 v11. add single match logic
-12. add win conditions (idea: a matchCout var that if === 8 triggers end of game)
-13. win popup (stop timer)
-
+v12. add win conditions (idea: a matchCount var that if === 8 triggers end of game)
+v13. handle win modal: 
+    v- make the modal box
+    v- make it appear on win
+    v- track and show user score:
+        v   * time
+        v   * moves
+        v   * stars: this will be the score. Based on stars:
+            v       * if stars are 3: "excellemt"
+            v       * if stars are 2: "good"
+            v       * if star is 1: "you can do better"
 * clean code
 
 ## Day 1 - Monday 19 March 2018
@@ -210,7 +218,28 @@ I could just check if matchedCards.length === 16.
 I just realized: timer should start only when usr clicks card for the first time.
 
 11:48am - ok. 
-- BUG 1: Now the problem is another p.s.: when I click on restart button, timer doesn't stop starts again - even though startGame() function was not invoked. I should investigate when I come back.
+- BUG 1: when I click on restart button, timer doesn't stop starts again - even though startGame() function was not invoked. I should investigate when I come back.
 - BUG 2: when usr wins game, timer goes 1s faster. 
 
-bug1-- the problem lies in the first gameStarted check. Remind this when you come back later in the afternoon. 
+bug1 -- the problem lies in the first gameStarted check. Remind this when you come back later in the afternoon. 
+
+/////////////////////////////////////////////////
+## Day 5 - Sun 25/3/18
+8:07am - time on restart handled. 
+Now I should:
+- make the modal box
+- make it appear on win
+- execute restart + close modal on X or btn click
+
+8:51am - aaaand this is done too. Another thing to do is to store impo data at the game win, that will be shown in the modal box. Such info are:
+- time
+- moves
+- stars: this will be the score. Based on stars:
+    * if stars are 3: "excellemt"
+    * if stars are 2: "good"
+    * if star is 1: "you can do better"
+I should go in order, handle one at a time
+
+9:23am - time and moves ok, stars now. 
+
+9:44am - even this is done. For the moment I think JS is good to go. Now it styling turn

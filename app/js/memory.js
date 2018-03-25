@@ -7,17 +7,23 @@
 */
 
 // define variables
-const container = document.getElementById('container');
-//restartBtn = document.getElementById('restart');
-const cards = container.getElementsByClassName('flip-container');
-var moveCounter = document.getElementById('move-counter'),
+const container = document.getElementById('container'),
+    cards = container.getElementsByClassName('flip-container'),
     star2 = document.getElementById('star-2'),
     star3 = document.getElementById('star-3'),
-    timer = document.getElementById('timer'),
+    modalBox = document.getElementById('win-modal'),
+    modalX = document.getElementById('modal-x'),
+    modalBtn = document.getElementById('modal-btn');
+var moveCounter = document.getElementById('move-counter'),
+    displayedTime = document.getElementById('displayed-time'),
+    userTime = document.getElementById('user-time'),
+    userMoves = document.getElementById('user-moves'),
+    userStars = document.getElementById('user-stars'),
+    userFinalScore = document.getElementById('user-final-score'),
     seconds = 0,
     minutes = 0,
     hours = 0,
-    time,
+    timer,
     clickCounter = 0,
     cardOne = "",
     cardOneID = "",
@@ -26,18 +32,22 @@ var moveCounter = document.getElementById('move-counter'),
     cardTwoID = "",
     cardTwoSpan = "",
     matchedCards = [],
-    gameStarted = false;
+    gameStarted = false,
+    restartBtn,
+    starNumber = 0;
 
+shuffleCards();
 
 for (let card of cards) {
     card.addEventListener('click', function () {
-                
-        if(!gameStarted){
+
+        if (!gameStarted) {
+
             startGame();
-            
-            console.log("gameStarted after startGame() is invoked = " + gameStarted);
+
+            // console.log("gameStarted after startGame() is invoked = " + gameStarted);
         }
-        
+
         if (matchedCards.includes(card.id)) {
 
             //console.log("this card is already matched", clickCounter);
@@ -85,12 +95,13 @@ for (let card of cards) {
                         matchedCards.push(cardTwoID);
 
                         // check win
-                        if(matchedCards.length === 2){
-                            setTimeout(function(){
-                                alert('you win1!');
-                            }, 500);
+                        if (matchedCards.length === 2) {
+
+                            // invoke win fn
+                            setTimeout(winGame, 500);
+
                         }
-                        
+
 
                     } else if (cardOneSpan !== cardTwoSpan) {
 
@@ -135,8 +146,13 @@ function trackScore() {
 
     if (moveCount > 10 && moveCount <= 15) {
         star3.classList.replace('fa-star', 'fa-star-o');
+        starNumber = 2;
+
     } else if (moveCount > 15) {
         star2.classList.replace('fa-star', 'fa-star-o');
+        starNumber = 1;
+    } else {
+        starNumber = 3;
     }
 }
 
@@ -192,10 +208,10 @@ function addTime() {
             minutes = 0;
         }
     }
-    
+
     // handle displyed time format
     // timer.textContent = hours + ":" + minutes + ":" + seconds;
-    timer.textContent =
+    displayedTime.textContent =
         (hours ? (hours > 9 ? hours : hours + "0") : "00") +
         ":" +
         (minutes ? (minutes > 59 ? minutes : "0" + minutes) : "00") +
@@ -207,8 +223,9 @@ function addTime() {
 }
 
 function watchTime() {
-    time = setTimeout(addTime, 1000);
+    timer = setTimeout(addTime, 1000);
 }
+
 
 /* 
    10. add restart button, that on click:
@@ -218,7 +235,6 @@ function watchTime() {
    - shuffles cards;
    <button class="bar__restart" id="restart" onclick="restart()">
 */
-
 function startGame() {
     gameStarted = true;
     watchTime();
@@ -226,8 +242,11 @@ function startGame() {
 
 function restart() {
 
-    timer.textContent = "00:00:00";
-    
+    //stop timer;
+    clearTimeout(timer);
+
+    displayedTime.textContent = "00:00:00";
+
     seconds = 0;
     minutes = 0;
     hours = 0;
@@ -244,12 +263,39 @@ function restart() {
     }
 
     shuffleCards();
-    
+
     gameStarted = false;
-    
+
     console.log("gameStarted after restart btn is clicked = " + gameStarted);
-    
-    // TODO: stop timer;
-    
-    // TODO: close 
+
+}
+
+// 13. handle win
+function winGame() {
+
+    // capture user time      
+    userTime.textContent = displayedTime.textContent;
+
+    userMoves.textContent = moveCounter.textContent;
+
+    userStars.textContent = starNumber.toString();
+
+    modalBox.style.display = "block";
+
+    if (starNumber === 3) {
+        userFinalScore.textContent = 'Excellent!';
+    } else if (starNumber === 2) {
+        userFinalScore.textContent = 'Good';
+    } else {
+        userFinalScore.textContent = 'You can do better';
+    }
+
+    document.addEventListener('click', function (event) {
+        if (event.target === modalX || event.target === modalBtn) {
+            // empty array of matched cards
+            matchedCards = [];
+            restart();
+            modalBox.style.display = "none";
+        }
+    })
 }
