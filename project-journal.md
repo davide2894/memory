@@ -1,18 +1,22 @@
 How to create a memory game:
 
+HTML:
 v1. raw html, 1 card
-v2. add flip animaton for one card
-v3. add rest of cards (total of 16, first one included)
-v4. modify js to flip selected card when clicked: use es6 newly added for...of loop to do so;
-v5. use css Grid to display cards as a 4x4 grid (first raw use of Grid)
-v6. add card shuffling on page load
-v7. add move counter
-v8. add stars feature. It's dependent on move counter's value
-v9. add timer
-v10. add restart button
-v11. add single match logic
-v12. add win conditions (idea: a matchCount var that if === 8 triggers end of game)
-v13. handle win modal: 
+v2. raw html, entire grid
+
+JS: 
+v3. add flip animaton for one card
+v4. add rest of cards (total of 16, first one included)
+v5. modify js to flip selected card when clicked: use es6 newly added for...of loop to do so;
+v6. use css Grid to display cards as a 4x4 grid (first raw use of Grid)
+v7. add card shuffling on page load
+v8. add move counter
+v9. add stars feature. It's dependent on move counter's value
+v10. add timer
+v11. add restart button
+v12. add single match logic
+v13. add win conditions (idea: a matchCount var that if === 8 triggers end of game)
+v14. handle win modal: 
     v- make the modal box
     v- make it appear on win
     v- track and show user score:
@@ -23,6 +27,17 @@ v13. handle win modal:
             v       * if stars are 2: "good"
             v       * if star is 1: "you can do better"
 * clean code
+Style:
+v15. set fonts
+v16. back of the card: orange with red star icon at the center 
+v17. download sprites
+v18. adust sprite sizes
+- download wallpaper
+- insert wallpaper
+- style modal
+- do tablet
+- do mobile
+
 
 ## Day 1 - Monday 19 March 2018
 9:37 am - calm down. While it feels the most huge project I encountered so far, all I need is to divide and conquer. As Udacity says: you don't build a house all at once, but brick by brick. So.
@@ -243,3 +258,58 @@ I should go in order, handle one at a time
 9:23am - time and moves ok, stars now. 
 
 9:44am - even this is done. For the moment I think JS is good to go. Now it styling turn
+
+
+
+/////////////////////////////////////////////////
+## Day 6 - Mon 26/3/18
+5:48am - it's all about style today. I should make a responsive style for the game. Since I want to deliver the project by tomorrow night, I should meet the reqs. I'll use CSS Grid for the overall layout, and Flexbox to style the divs internally.
+
+7:10am - alright. I chose the game tbeme. It will be 80s DB. For these I need:
+- press 2p font
+- a paired up font like roboto
+- db 80s wallpaper bg
+- 8 db chars sprites 
+
+Steps I should make: 
+v set fonts
+v back of the card: orange with red star icon at the center 
+v download sprites
+- adust sprite sizes
+- download wallpaper
+- insert wallpaper
+- style modal
+- do tablet
+- do mobile
+
+I should take the font.
+
+7:24am - font imported. 
+Next is to replace restart button w/ relative icon
+
+8:31am - I placed the icon and it works as the button. 
+Let me make the back of the card as a dragon ball
+
+9:04am - added that.
+Next is to download sprites
+
+11:19am - wo, sprite took more than expected. 
+Next is to adjust the sprite imgs that need to. They are:
+v frieza
+v kame
+v cell
+v trunks 
+v piccolo
+
+11:45am - ok, done.
+Next is the wallpaper. I need to find a wallpaper that I can use as bg.
+
+12:00pm - I couldn't find a wallpaper yet. Options are two:
+1. save it for the game and use it for modal
+2. use a bg for game and one for modal
+
+I'll go for two. When I come here tomorrow I will have to:
+- make a bg (try with shenron)
+- style modal
+- make tablet version
+- make laptop version

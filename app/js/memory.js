@@ -33,7 +33,7 @@ var moveCounter = document.getElementById('move-counter'),
     cardTwoSpan = "",
     matchedCards = [],
     gameStarted = false,
-    restartBtn,
+    restartBtn = document.getElementById('restart'),
     starNumber = 0;
 
 shuffleCards();
@@ -95,7 +95,7 @@ for (let card of cards) {
                         matchedCards.push(cardTwoID);
 
                         // check win
-                        if (matchedCards.length === 2) {
+                        if (matchedCards.length === 16) {
 
                             // invoke win fn
                             setTimeout(winGame, 500);
@@ -118,6 +118,10 @@ for (let card of cards) {
         }
     })
 }
+
+restartBtn.addEventListener('click', function(){
+    restart();
+})
 
 function flipCard(element) {
     element.classList.add('hover');
@@ -241,7 +245,7 @@ function startGame() {
 }
 
 function restart() {
-
+    
     //stop timer;
     clearTimeout(timer);
 

@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <title>Memory Game</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://use.fontawesome.com/3eb9080354.js"></script>
+    <!--     <script src="https://use.fontawesome.com/3eb9080354.js">
+    </script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+
 </head>
 
 <body>
     <div class="wrapper">
 
-        <header>
-            <h1 class="header__title">Memory Game</h1>
+        <header class="header">
+            <h1 class="header__title header__title--memory">Memory</h1>
+            <h1 class="header__title header__title--game">Game</h1>
             <!-- To substitute with brain icon -->
-            <p class="header__p">Keep your brain sharp</p>
+            <!-- <p class="header__subtitle">Keep your brain sharp</p> -->
         </header>
 
         <main>
@@ -34,9 +39,204 @@
                         00:00:00
                    </time>
                 </div>
-                <button class="bar__restart" id="restart" onclick="restart()">
-                    Restart
-                </button>
+                <i class="fas fa-redo-alt fa-4x bar__restart" id="restart"></i>
+
+            </section>
+
+            <section class="cards" id="container">
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="1">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">V</i>
+                            <span class="span--hide ">1</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/vegeta.png" alt="Vegeta sprite from Dragon Ball" class="card__sprite card__sprite--vegeta">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="2">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">V</i>
+                            <span class="span--hide">1</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/vegeta.png" alt="Vegeta sprite from Dragon Ball" class="card__sprite card__sprite--vegeta">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="3">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">G</i>
+                            <span class="span--hide">2</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/goku.png" alt="Goku sprite from Dragon Ball" class="card__sprite card__sprite--goku">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="4">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">G</i>
+                            <span class="span--hide">2</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/goku.png" alt="Goku sprite from Dragon Ball" class="card__sprite card__sprite--goku">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="5">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">K</i>
+                            <span class="span--hide">3</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/kame.png" alt="Old genius sprite from Dragon Ball" class="card__sprite card__sprite--kame">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="6">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">K</i>
+                            <span class="span--hide">3</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/kame.png" alt="Old genius sprite from Dragon Ball" class="card__sprite card__sprite--kame">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="7">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">F</i>
+                            <span class="span--hide">4</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/frieza.png" alt="Frieza sprite from Dragon Ball" class="card__sprite card__sprite--frieza">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="8">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">F</i>
+                            <span class="span--hide">4</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/frieza.png" alt="Frieza sprite from Dragon Ball" class="card__sprite card__sprite--frieza">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="9">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">C</i>
+                            <span class="span--hide">5</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/cell.png" alt="Cell sprite from Dragon Ball" class="card__sprite card__sprite--cell">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="10">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">C</i>
+                            <span class="span--hide">5</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/cell.png" alt="Cell sprite from Dragon Ball" class="card__sprite card__sprite--cell">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="11">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">T</i>
+                            <span class="span--hide">6</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/trunks.png" alt="Trunks sprite from Dragon Ball" class="card__sprite card__sprite--trunks">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="12">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">T</i>
+                            <span class="span--hide">6</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/trunks.png" alt="Trunks sprite from Dragon Ball" class="card__sprite card__sprite--trunks">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="13">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">B</i>
+                            <span class="span--hide">7</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/beerus.png" alt="Beerus sprite from Dragon Ball" class="card__sprite card__sprite--beerus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="14">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">B</i>
+                            <span class="span--hide">7</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/beerus.png" alt="Beerus sprite from Dragon Ball" class="card__sprite card__sprite--beerus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="15">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">P</i>
+                            <span class="span--hide">8</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/piccolo.png" alt="Piccolo sprite from Dragon Ball" class="card__sprite card__sprite--piccolo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="16">
+                    <div class="flipper">
+                        <div class="card__front">
+                            <i class="fa fa-star card__star">P</i>
+                            <span class="span--hide">8</span>
+                        </div>
+                        <div class="card__back">
+                            <img src="images/piccolo.png" alt="Piccolo sprite from Dragon Ball" class="card__sprite card__sprite--piccolo">
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
             <!-- Modal box to display when user wins the game -->
@@ -46,191 +246,10 @@
                     <span class="modal__x" id="modal-x">&times;</span>
                     <h1 class="modal__header">Congratulations!</h1>
                     <p class="modal__text">
-                        You won in <span class="user__time" id="user-time">__</span> with <span class="user__moves" id="user-moves">__</span> moves and <span class="user__stars" id="user-stars">__</span> stars.<br>
-                        score string goes here --> <span class="user__final-score" id="user-final-score">__</span>    
+                        You won in <span class="user__time" id="user-time">__</span> with <span class="user__moves" id="user-moves">__</span> moves and <span class="user__stars" id="user-stars">__</span> stars.<br> score string goes here --> <span class="user__final-score" id="user-final-score">__</span>
                     </p>
 
                     <button class="modal__btn" id="modal-btn">Play again!</button>
-                </div>
-
-            </section>
-
-            <section class="cards" id="container">
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="1">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">1</span>
-                        </div>
-                        <div class="card__back">
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="2">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">1</span>
-                        </div>
-                        <div class="card__back">
-                            <span>1</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="3">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">2</span>
-                        </div>
-                        <div class="card__back">
-                            <span>2</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="4">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">2</span>
-                        </div>
-                        <div class="card__back">
-                            <span>2</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="5">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">3</span>
-                        </div>
-                        <div class="card__back">
-                            <span>3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="6">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">3</span>
-                        </div>
-                        <div class="card__back">
-                            <span>3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="7">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">4</span>
-                        </div>
-                        <div class="card__back">
-                            <span>4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="8">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">4</span>
-                        </div>
-                        <div class="card__back">
-                            <span>4</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="9">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">5</span>
-                        </div>
-                        <div class="card__back">
-                            <span>5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="10">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">5</span>
-                        </div>
-                        <div class="card__back">
-                            <span>5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="11">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">6</span>
-                        </div>
-                        <div class="card__back">
-                            <span>6</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="12">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">6</span>
-                        </div>
-                        <div class="card__back">
-                            <span>6</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="13">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">7</span>
-                        </div>
-                        <div class="card__back">
-                            <span>7</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="14">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">7</span>
-                        </div>
-                        <div class="card__back">
-                            <span>7</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="15">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">8</span>
-                        </div>
-                        <div class="card__back">
-                            <span>8</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" id="16">
-                    <div class="flipper">
-                        <div class="card__front">
-                            <span class="span--hide">8</span>
-                        </div>
-                        <div class="card__back">
-                            <span>8</span>
-                        </div>
-                    </div>
                 </div>
 
             </section>

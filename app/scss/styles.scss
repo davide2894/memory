@@ -11,6 +11,7 @@ body,
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    box-sizing: border-box;
 }
 
 table {
@@ -20,11 +21,39 @@ table {
 
 /*-----------------------------------------------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 .wrapper {
-    margin: 0 1em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
 }
+
+.header {
+    margin-top: 5em;
+}
+
+.header__title,
+.header__subtitle {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
 .header__title {
-    font-size: 9em;
+    font-size: 6em;
+    text-transform: uppercase;
+}
+.header__title--memory {
+    color: #0083d8;
+    //color: #fdEb00;
+}
+
+.header__title--game {
+    color: #ff0000;
+}
+
+.header__subtitle {
+    font-size: 2em;
 }
 
 
@@ -35,47 +64,36 @@ table {
     -----------------------------------------
     -----------------------------------------
 */
-.bar__restart {
-    padding: 1em;
+
+.bar {
+    display: flex;
+    margin-top: 5em;
+    justify-content: space-around;
 }
+
+.bar > * {
+    font-size: 2.5em;
+    align-self: center;
+}
+
 .bar__restart:hover {
     cursor: pointer;
 }
-.fa-star {
+
+.bar__time {
+    font-size: 5em;
+}
+
+.fa,
+.fas,
+.fa-star,
+.fa-redo,
+.fa-redo-alt {
     color: #333;
 }
 
 
-/*
-    -----------------------------------------
-    -----------------------------------------
-                    MODAL
-    -----------------------------------------
-    -----------------------------------------
-*/
-.modal {
-    display: none;
-    z-index: 3; /* stay on top */
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%; /* full width */
-    height: 100%; /* full height */
-    background-color: #ddd;
-    outline: 2px solid #333;
-    
-    /* TODO: 
-     * - enable scrolling
-     */
-}
-.modal__content {
-    width: 70%;
-    padding: 1em;
-}
-.modal__btn {
-    padding: .5em;
-    font: 2em;
-}
+
 
 
 /*
@@ -85,26 +103,33 @@ table {
     -----------------------------------------
     -----------------------------------------
 */
+
 .cards {
-    border: 1px solid black;
-    max-width: 600px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
 }
+
+.card {
+    margin: 1em;
+
+}
+
 .flip-container {
     perspective: 1000px;
-    border: 2px solid black;
-    margin: 0;
 }
 
 /* flip card on hover */
+
 .flip-container:hover {
     cursor: pointer;
 }
-.flip-container.hover .flipper{
+
+.flip-container.hover .flipper {
     transform: rotateY(180deg);
 }
+
 /* .flip-container.hover-back .flipper {
     transform: rotateY(-180deg);
 } */
@@ -112,19 +137,20 @@ table {
 .flip-container,
 .card__front,
 .card__back {
-    width: 150px;
-    height: 150px;
-    border-radius: 6px;
+    width: 20em;
+    height: 20em;
+    border-radius: 6em;
 }
 
 /* flip speed */
+
 .flipper {
     transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
+    transform-style: preserve-3d; //position: relative;
 }
 
 /* hide card__back during the swap */
+
 .card__front,
 .card__back {
     backface-visibility: hidden;
@@ -134,26 +160,108 @@ table {
 }
 
 /* place card__front above card__back */
+
 .card__front {
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
-    background: pink;
+    background: radial-gradient(circle, #f3ea01, #f3ac00, #f4911a, #f4911a);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 20px solid #f3ea01;
+
 }
+
+.card__star {
+    font-size: 5em;
+    align-self: center;
+    color: #F74031;
+}
+
 .card__front span,
 .card__back span {
     font-size: 2em;
 }
+
 .card__back span {
     color: #fff;
 }
+
 /* hide card__back since the beginning */
+
 .card__back {
     transform: rotateY(180deg);
-    background: brown;
+    background: #ff9800;
 }
 
-/* .span--hide {
-    display: none;
-} */
+.card__sprite {
+    transform: scale(1.8);
+    position: relative;
+    top: 24%;
+    left: 35%;
+}
 
+.card__sprite--cell {
+    transform: scale(1.6);
+}
+
+.card__sprite--frieza {
+    transform: scale(2.4);
+    top: 12%;
+    left: 45%;
+}
+
+.card__sprite--kame {
+    left: 30%;
+}
+
+.card__sprite--trunks {
+    top: 20%;
+}
+
+.card__sprite--piccolo {
+    transform: scale(1.5);
+    left: 30%;
+}
+
+.span--hide {
+    display: none;
+}
+
+/*
+    -----------------------------------------
+    -----------------------------------------
+                    MODAL
+    -----------------------------------------
+    -----------------------------------------
+*/
+
+.modal {
+    display: none;
+    z-index: 3;
+    /* stay on top */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* full width */
+    height: 100%;
+    /* full height */
+    background-color: #ddd;
+    outline: 2px solid #333;
+
+    /* TODO: 
+     * - enable scrolling
+     */
+}
+
+.modal__content {
+    width: 70%;
+    padding: 1em;
+}
+
+.modal__btn {
+    padding: .5em;
+    font: 2em;
+}
