@@ -276,7 +276,7 @@ v set fonts
 v back of the card: orange with red star icon at the center 
 v download sprites
 - adust sprite sizes
-- download wgulallpaper
+- download wallpaper
 - insert wallpaper
 - style modal
 - do tablet
@@ -313,20 +313,3 @@ I'll go for two. When I come here tomorrow I will have to:
 - style modal
 - make tablet version
 - make laptop version
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-## Day 7 - Tue 27/3/18
-6:27am - good morning. I feel a bit sleeply, don't know why but it's affecting my productivity. By noon I want to finish the game and send it for review.
-Here's what I'm gonna do:
-- make tablet version
-- make laptop version
-- style modal
-- make a bg (try with shenron)
-
-I should make it tablet now. Won't take much.
-
-10:49am - wtf did just happen? It was wierd. I feel wierd. This whole morning is weird.
-
-11:57am - gulp is reloading the browser and compling sass yet it doesn't inject the style changes. I don't understand the reason. Need to look more into it. The problem is that sass doesn't update the css file at its destination. 

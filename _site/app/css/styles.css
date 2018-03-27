@@ -1,6 +1,7 @@
 /*
     Reset
 */
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 html,
 body,
 * {
@@ -10,7 +11,6 @@ body,
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 table {
@@ -18,14 +18,13 @@ table {
   border-spacing: 0; }
 
 /*-----------------------------------------------------------------------------*/
-body {
-  background: #000; }
-
 .wrapper {
-  margin: .6em; }
+  margin: 1em;
+  display: flex;
+  flex-direction: column; }
 
 .header {
-  margin-top: 2em; }
+  margin-top: 5em; }
 
 .header__title,
 .header__subtitle {
@@ -33,7 +32,7 @@ body {
   font-family: 'Press Start 2P', cursive; }
 
 .header__title {
-  font-size: 2em;
+  font-size: 6em;
   text-transform: uppercase; }
 
 .header__title--memory {
@@ -53,31 +52,26 @@ body {
     -----------------------------------------
 */
 .bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  margin-top: 2em;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  color: #fff; }
+  margin-top: 5em;
+  justify-content: space-around; }
 
 .bar > * {
-  font-size: 1em;
-  -ms-flex-item-align: center;
+  font-size: 2.5em;
   align-self: center; }
-
-.bar__time {
-  font-size: 2em; }
 
 .bar__restart:hover {
   cursor: pointer; }
+
+.bar__time {
+  font-size: 5em; }
 
 .fa,
 .fas,
 .fa-star,
 .fa-redo,
 .fa-redo-alt {
-  color: #ff0000; }
+  color: #333; }
 
 /*
     -----------------------------------------
@@ -87,23 +81,15 @@ body {
     -----------------------------------------
 */
 .cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  margin-top: 2em;
-  width: 100%; }
+  margin-top: 2em; }
 
 .card {
-  margin: .5em .1em;
-  max-width: 100%; }
+  margin: 1em; }
 
 .flip-container {
-  -webkit-perspective: 1000px;
   perspective: 1000px; }
 
 /* flip card on hover */
@@ -111,7 +97,6 @@ body {
   cursor: pointer; }
 
 .flip-container.hover .flipper {
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
 /* .flip-container.hover-back .flipper {
@@ -120,21 +105,18 @@ body {
 .flip-container,
 .card__front,
 .card__back {
-  width: 8em;
-  height: 8em;
-  border-radius: 2em; }
+  width: 20em;
+  height: 20em;
+  border-radius: 6em; }
 
 /* flip speed */
 .flipper {
-  -webkit-transition: 0.6s;
   transition: 0.6s;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
 
 /* hide card__back during the swap */
 .card__front,
 .card__back {
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -144,24 +126,15 @@ body {
 .card__front {
   z-index: 2;
   /* for firefox 31 */
-  -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
   background: radial-gradient(circle, #f3ea01, #f3ac00, #f4911a, #f4911a);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  border: 6px solid #f3ea01; }
+  border: 20px solid #f3ea01; }
 
 .card__star {
-  font-size: 2em;
-  -ms-flex-item-align: center;
+  font-size: 5em;
   align-self: center;
   color: #F74031; }
 
@@ -169,44 +142,41 @@ body {
 .card__back span {
   font-size: 2em; }
 
+.card__back span {
+  color: #fff; }
+
 /* hide card__back since the beginning */
 .card__back {
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   background: #ff9800; }
 
 .card__sprite {
-  -webkit-transform: scale(1.8);
+  transform: scale(1.8);
   position: relative;
   top: 24%;
-  left: 35%;
-  max-width: 30%; }
+  left: 35%; }
 
 .card__sprite--cell {
-  -webkit-transform: scale(1.6); }
+  transform: scale(1.6); }
 
 .card__sprite--frieza {
-  -webkit-transform: scale(2.4);
+  transform: scale(2.4);
   top: 12%;
   left: 45%; }
 
 .card__sprite--kame {
-  left: 30%;
-  max-width: 50%; }
+  left: 30%; }
 
 .card__sprite--trunks {
-  top: 20%;
-  left: 30%;
-  max-width: 50%; }
+  top: 20%; }
 
 .card__sprite--piccolo {
-  left: 30%;
-  max-width: 50%; }
+  transform: scale(1.5);
+  left: 30%; }
 
-/* .span--hide,
-.card__letter {
-    display: none;
-} */
+.span--hide {
+  display: none; }
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -217,12 +187,19 @@ body {
 .modal {
   display: none;
   z-index: 3;
+  /* stay on top */
   position: fixed;
-  left: 20%;
-  top: 20%;
-  width: 50%;
-  height: 50%;
-  background-color: #ddd; }
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* full width */
+  height: 100%;
+  /* full height */
+  background-color: #ddd;
+  outline: 2px solid #333;
+  /* TODO: 
+     * - enable scrolling
+     */ }
 
 .modal__content {
   width: 70%;
@@ -230,26 +207,4 @@ body {
 
 .modal__btn {
   padding: .5em;
-  font-size: 2.5em; }
-
-/*
-    -----------------------------------------
-    -----------------------------------------
-                    MEDIA QUERIES
-    -----------------------------------------
-    -----------------------------------------
-*/
-@media screen and (min-width: 350px) {
-  .header {
-    font-size: 1.8em; } }
-
-@media screen and (min-width: 400px) {
-  .header {
-    font-size: 2em; }
-  .card__sprite--piccolo {
-    max-width: 45%; } }
-
-@media screen and (min-width: 650px) {
-  .wrapper {
-    max-width: 650px;
-    margin: 0 auto; } }
+  font: 2em; }

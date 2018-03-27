@@ -95,7 +95,7 @@ for (let card of cards) {
                         matchedCards.push(cardTwoID);
 
                         // check win
-                        if (matchedCards.length === 2) {
+                        if (matchedCards.length === 16) {
 
                             // invoke win fn
                             setTimeout(winGame, 500);
@@ -150,7 +150,6 @@ function trackScore() {
 
     if (moveCount > 10 && moveCount <= 15) {
         star3.classList.replace('fa-star', 'fa-star-o');
-        //star3.style.cssText = "color: #fff";
         starNumber = 2;
 
     } else if (moveCount > 15) {

@@ -3,15 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Memory Game</title>
-    <!-- TODO: favicon: brain icon -->
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <!--     <script src="https://use.fontawesome.com/3eb9080354.js">
     </script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
@@ -20,6 +18,7 @@
         <header class="header">
             <h1 class="header__title header__title--memory">Memory</h1>
             <h1 class="header__title header__title--game">Game</h1>
+            <!-- To substitute with brain icon -->
             <!-- <p class="header__subtitle">Keep your brain sharp</p> -->
         </header>
 
@@ -40,7 +39,7 @@
                         00:00:00
                    </time>
                 </div>
-                <i class="fas fa-redo-alt fa-2x bar__restart" id="restart"></i>
+                <i class="fas fa-redo-alt fa-4x bar__restart" id="restart"></i>
 
             </section>
 
@@ -49,7 +48,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="1">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">V</span></i>
+                            <i class="fa fa-star card__star">V</i>
                             <span class="span--hide ">1</span>
                         </div>
                         <div class="card__back">
@@ -61,7 +60,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="2">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">V</span></i>
+                            <i class="fa fa-star card__star">V</i>
                             <span class="span--hide">1</span>
                         </div>
                         <div class="card__back">
@@ -73,7 +72,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="3">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">G</span></i>
+                            <i class="fa fa-star card__star">G</i>
                             <span class="span--hide">2</span>
                         </div>
                         <div class="card__back">
@@ -85,7 +84,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="4">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">G</span></i>
+                            <i class="fa fa-star card__star">G</i>
                             <span class="span--hide">2</span>
                         </div>
                         <div class="card__back">
@@ -97,7 +96,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="5">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">K</span></i>
+                            <i class="fa fa-star card__star">K</i>
                             <span class="span--hide">3</span>
                         </div>
                         <div class="card__back">
@@ -109,7 +108,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="6">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">K</span></i>
+                            <i class="fa fa-star card__star">K</i>
                             <span class="span--hide">3</span>
                         </div>
                         <div class="card__back">
@@ -121,7 +120,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="7">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">F</span></i>
+                            <i class="fa fa-star card__star">F</i>
                             <span class="span--hide">4</span>
                         </div>
                         <div class="card__back">
@@ -133,7 +132,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="8">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">F</span></i>
+                            <i class="fa fa-star card__star">F</i>
                             <span class="span--hide">4</span>
                         </div>
                         <div class="card__back">
@@ -145,7 +144,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="9">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">C</span></i>
+                            <i class="fa fa-star card__star">C</i>
                             <span class="span--hide">5</span>
                         </div>
                         <div class="card__back">
@@ -157,7 +156,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="10">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">C</span></i>
+                            <i class="fa fa-star card__star">C</i>
                             <span class="span--hide">5</span>
                         </div>
                         <div class="card__back">
@@ -169,7 +168,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="11">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">T</span></i>
+                            <i class="fa fa-star card__star">T</i>
                             <span class="span--hide">6</span>
                         </div>
                         <div class="card__back">
@@ -181,7 +180,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="12">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">T</span></i>
+                            <i class="fa fa-star card__star">T</i>
                             <span class="span--hide">6</span>
                         </div>
                         <div class="card__back">
@@ -193,7 +192,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="13">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">B</span></i>
+                            <i class="fa fa-star card__star">B</i>
                             <span class="span--hide">7</span>
                         </div>
                         <div class="card__back">
@@ -205,7 +204,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="14">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">B</span></i>
+                            <i class="fa fa-star card__star">B</i>
                             <span class="span--hide">7</span>
                         </div>
                         <div class="card__back">
@@ -217,7 +216,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="15">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">P</span></i>
+                            <i class="fa fa-star card__star">P</i>
                             <span class="span--hide">8</span>
                         </div>
                         <div class="card__back">
@@ -229,7 +228,7 @@
                 <div class="flip-container card" ontouchstart="this.classList.toggle('hover');" id="16">
                     <div class="flipper">
                         <div class="card__front">
-                            <i class="fa fa-star card__star"><span class="card__letter">P</span></i>
+                            <i class="fa fa-star card__star">P</i>
                             <span class="span--hide">8</span>
                         </div>
                         <div class="card__back">
@@ -247,11 +246,12 @@
                     <span class="modal__x" id="modal-x">&times;</span>
                     <h1 class="modal__header">Congratulations!</h1>
                     <p class="modal__text">
-                        You won in <span class="user__time" id="user-time">__</span> with <span class="user__moves" id="user-moves">__</span> moves and <span class="user__stars" id="user-stars">__</span> stars.<br> score Your score is: <span class="user__final-score" id="user-final-score">__</span>
+                        You won in <span class="user__time" id="user-time">__</span> with <span class="user__moves" id="user-moves">__</span> moves and <span class="user__stars" id="user-stars">__</span> stars.<br> score string goes here --> <span class="user__final-score" id="user-final-score">__</span>
                     </p>
 
                     <button class="modal__btn" id="modal-btn">Play again!</button>
                 </div>
+
             </section>
 
         </main>
