@@ -95,7 +95,7 @@ for (let card of cards) {
                         matchedCards.push(cardTwoID);
 
                         // check win
-                        if (matchedCards.length === 2) {
+                        if (matchedCards.length === 16) {
 
                             // invoke win fn
                             setTimeout(winGame, 500);
