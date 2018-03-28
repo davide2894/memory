@@ -345,5 +345,5 @@ Ok so I should style the modal.
 
 7:28am - now the bar doesn't show the assigned style.
 
-9:36pm - it was a bug in brackers. ok so now I've styled the title as to give it db font and made cards round, w/border. So now they look like actual dragon balls. 
+9:36am - it was a bug in brackers. ok so now I've styled the title as to give it db font and made cards round, w/border. So now they look like actual dragon balls. 
 The thing left could be modal customization. Now it's gray.

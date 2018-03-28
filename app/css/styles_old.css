@@ -22,14 +22,8 @@ table {
 
 /*-----------------------------------------------------------------------------*/
 
-@font-face {
-    font-family: Saiyan-Sans;
-    src: url(/fonts/Saiyan-Sans.ttf);
-}
-
-
 body {
-    background-color: #171314;
+    background: #000;
 }
 
 .wrapper {
@@ -40,66 +34,26 @@ body {
     margin-top: 2em;
 }
 
-.header__title {
+.header__title,
+.header__subtitle {
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
-    font-family: 'Saiyan-Sans';
 }
 
 .header__title {
-    font-size: 4em;
+    font-size: 2em;
     text-transform: uppercase;
 }
 
-/*
-.header__title--ki {
-    color: #f7ff00;
-}
-
-.header__title--o {
-    color: #f7a100
-}
-
-.header__title--ku {
-    color: #ff0000;
-}
-*/
 .header__title--memory {
-    color: #f7ff00;
-}
-
-.header__title--o {
-    color: #f7a100
+    color: #0083d8;
 }
 
 .header__title--game {
     color: #ff0000;
 }
 
-/*
-    -----------------------------------------
-    -----------------------------------------
-                    KEYFRAMES
-    -----------------------------------------
-    -----------------------------------------
-*/
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.header__subtitle {
+    font-size: 2em;
 }
 
 /*
@@ -111,7 +65,6 @@ body {
 */
 
 .bar {
-    font-family: 'Roboto', 'sans-serif';
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -131,9 +84,7 @@ body {
     font-size: 2em;
 }
 
-.bar__restart:hover,
-.modal__x:hover,
-.modal__btn:hover {
+.bar__restart:hover {
     cursor: pointer;
 }
 
@@ -196,7 +147,7 @@ body {
 .card__back {
     width: 8em;
     height: 8em;
-    border-radius: 6em;
+    border-radius: 2em;
 }
 
 /* flip speed */
@@ -217,7 +168,6 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    border: 6px solid #000;
 }
 
 /* place card__front above card__back */
@@ -238,7 +188,7 @@ body {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    /*border: 6px solid #f3ea01;*/
+    border: 6px solid #f3ea01;
 }
 
 .card__star {
@@ -309,38 +259,22 @@ body {
 */
 
 .modal {
-    display: none;
-/*
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-*/
+    display: none; //display: block;
     z-index: 3;
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* take full page */
-    height: 100%;
-    /* take full page */
-    background-color: rgba(0, 0, 0, 0.5);
-    /* opaque */
-    -webkit-box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.2);
+    left: 14%;
+    top: 25%;
+    width: 70%;
+    height: 70%;
+    background-color: #ddd;
 }
 
 .modal__content {
-    width: 80%;
-    height: 70%;
-    border-radius: 0.5em;
-    -ms-flex-item-align: center;
-    align-self: center;
+    width: 90%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin: 5em auto;
+    margin: 0 auto;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -348,24 +282,6 @@ body {
     flex-direction: column;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    background-color: #ddd;
-    padding: 1em;
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    background-color: #f7b056; /* fallback */ 
-    background-color: #efae56;
-    -webkit-box-shadow: 
-        0 0 0 1px #000,
-        0 0 0 10px #ad0000,
-        0 0 0 1px #000;
-    box-shadow: 
-        0 0 0 1px #000,
-        0 0 0 10px #ad0000,
-        0 0 0 1px #000;
 }
 
 .modal__header {
@@ -376,7 +292,6 @@ body {
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-top: 2em;
-    font-weight: 600;
 }
 
 .modal__h2 {
@@ -384,7 +299,7 @@ body {
 }
 
 .modal__x {
-    /* outline: 1px solid #000;*/
+    outline: 1px solid #000;
     -ms-flex-item-align: end;
     align-self: flex-end;
     font-weight: 800;
@@ -392,29 +307,20 @@ body {
 }
 
 .modal__text {
-    margin-top: 2em;
-    text-align: center;
-    color: #000;
+    margin-top: 3em;
 }
 
 .modal__btn {
-    margin-top: 3em;
+    margin-top: 1em;
     padding: .5em;
     font-size: 1em;
-    background: #009f00;
+    background: #333;
     color: #f5f5f5;
     font-weight: 600;
     border-radius: 6px;
     max-width: 100%;
     -ms-flex-item-align: center;
     align-self: center;
-}
-
-.user__moves,
-.user__stars,
-.user__time,
-.user__final-score {
-    font-weight: 800;
 }
 
 /*
@@ -437,14 +343,6 @@ body {
     }
     .card__sprite--piccolo {
         max-width: 45%;
-    }
-
-    .modal__content {
-        max-width: 350px;
-    }
-
-    .modal__text {
-        font-size: 1.2em;
     }
 }
 

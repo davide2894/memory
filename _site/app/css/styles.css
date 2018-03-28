@@ -1,7 +1,6 @@
 /*
     Reset
 */
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 html,
 body,
 * {
@@ -11,6 +10,7 @@ body,
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 table {
@@ -20,7 +20,12 @@ table {
 /*-----------------------------------------------------------------------------*/
 .wrapper {
   margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column; }
 
 .header {
@@ -52,12 +57,16 @@ table {
     -----------------------------------------
 */
 .bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 5em;
+  -ms-flex-pack: distribute;
   justify-content: space-around; }
 
 .bar > * {
   font-size: 2.5em;
+  -ms-flex-item-align: center;
   align-self: center; }
 
 .bar__restart:hover {
@@ -81,8 +90,13 @@ table {
     -----------------------------------------
 */
 .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin-top: 2em; }
 
@@ -90,6 +104,7 @@ table {
   margin: 1em; }
 
 .flip-container {
+  -webkit-perspective: 1000px;
   perspective: 1000px; }
 
 /* flip card on hover */
@@ -97,6 +112,7 @@ table {
   cursor: pointer; }
 
 .flip-container.hover .flipper {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
 /* .flip-container.hover-back .flipper {
@@ -111,12 +127,15 @@ table {
 
 /* flip speed */
 .flipper {
+  -webkit-transition: 0.6s;
   transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
 
 /* hide card__back during the swap */
 .card__front,
 .card__back {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -126,15 +145,24 @@ table {
 .card__front {
   z-index: 2;
   /* for firefox 31 */
+  -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
   background: radial-gradient(circle, #f3ea01, #f3ac00, #f4911a, #f4911a);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   border: 20px solid #f3ea01; }
 
 .card__star {
   font-size: 5em;
+  -ms-flex-item-align: center;
   align-self: center;
   color: #F74031; }
 
@@ -147,19 +175,23 @@ table {
 
 /* hide card__back since the beginning */
 .card__back {
+  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
   background: #ff9800; }
 
 .card__sprite {
+  -webkit-transform: scale(1.8);
   transform: scale(1.8);
   position: relative;
   top: 24%;
   left: 35%; }
 
 .card__sprite--cell {
+  -webkit-transform: scale(1.6);
   transform: scale(1.6); }
 
 .card__sprite--frieza {
+  -webkit-transform: scale(2.4);
   transform: scale(2.4);
   top: 12%;
   left: 45%; }
@@ -171,6 +203,7 @@ table {
   top: 20%; }
 
 .card__sprite--piccolo {
+  -webkit-transform: scale(1.5);
   transform: scale(1.5);
   left: 30%; }
 
