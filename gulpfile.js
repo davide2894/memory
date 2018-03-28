@@ -21,7 +21,7 @@ var runSequence = require('run-sequence');
 gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: 'app'
+      baseDir: '.'
     }
   })
 })
@@ -36,14 +36,14 @@ gulp.task('sass', function() {
 // Watchers
 gulp.task('watch', function() {
   //gulp.watch('app/scss/**/*.scss', ['sass']).on("change", browserSync.reload);
-  gulp.watch('app/css/*.css', browserSync.reload);
-  gulp.watch('app/*.html', browserSync.reload);
-  gulp.watch('app/js/**/*.js', browserSync.reload);
+  gulp.watch('css/*.css', browserSync.reload);
+  gulp.watch('*.html', browserSync.reload);
+  gulp.watch('js/**/*.js', browserSync.reload);
 })
 
 // Responsive images
 gulp.task("images:responsive", function(){
-    return gulp.src(["app/images/*.{png,jpg}"])
+    return gulp.src(["images/*.{png,jpg}"])
     .pipe($.responsive({
         // resize all JPGs to different resolutions
         "*.jpg": [{
@@ -91,7 +91,7 @@ gulp.task("images:responsive", function(){
 // Optimizing CSS and JavaScript 
 gulp.task('useref', function() {
 
-  return gulp.src('app/*.html')
+  return gulp.src('*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
@@ -100,7 +100,7 @@ gulp.task('useref', function() {
 
 // Optimizing Images 
 gulp.task('images:minify', function() {
-  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  return gulp.src('images/**/*.+(png|jpg|jpeg|gif|svg)')
     // Caching images that ran through imagemin
     .pipe(cache(imagemin({
       interlaced: true,
@@ -122,7 +122,7 @@ gulp.task("images:compress", function () {
 
 // Copying fonts 
 gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
+  return gulp.src('fonts/**/*')
     .pipe(gulp.dest('docs/fonts'))
 })
 
@@ -141,7 +141,7 @@ gulp.task('clean:docs', function() {
 // ---------------
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browserSync'], 'watch',
+  runSequence(['browserSync'], 'watch',
     callback
   )
 });
