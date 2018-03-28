@@ -1,6 +1,6 @@
 # Memory - a Dragon Ball-based memory game
 
-![Game preview](app/images/mockup.jpg?raw=true)
+![Game preview](images/mockup.jpg?raw=true)
 
 ## What is it
 Memory is a Dragon Ball-based memory game. 
