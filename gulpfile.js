@@ -27,17 +27,16 @@ gulp.task('browserSync', function() {
 })
 
 gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
-    .pipe(gulp.dest('app/css/')) // Outputs it in the css folder
-    .pipe(browserSync.reload({ // Reloading with Browser Sync
-      stream: true
-    }));
+  return gulp.src('app/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('app/css/'))
+    .pipe(browserSync.reload({ stream: true }));
 })
 
 // Watchers
 gulp.task('watch', function() {
-  gulp.watch('app/scss/**/*.scss', ['sass']).on("change", browserSync.reload);
+  //gulp.watch('app/scss/**/*.scss', ['sass']).on("change", browserSync.reload);
+  gulp.watch('app/css/*.css', browserSync.reload);
   gulp.watch('app/*.html', browserSync.reload);
   gulp.watch('app/js/**/*.js', browserSync.reload);
 })
@@ -96,7 +95,7 @@ gulp.task('useref', function() {
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('docs'));
 });
 
 // Optimizing Images 
@@ -106,7 +105,7 @@ gulp.task('images:minify', function() {
     .pipe(cache(imagemin({
       interlaced: true,
     })))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('docs/images'))
 });
 
 // Compress Images
@@ -124,18 +123,18 @@ gulp.task("images:compress", function () {
 // Copying fonts 
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/**/*')
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest('docs/fonts'))
 })
 
 // Cleaning 
 gulp.task('clean', function() {
-  return del.sync('dist').then(function(cb) {
+  return del.sync('docs').then(function(cb) {
     return cache.clearAll(cb);
   });
 })
 
-gulp.task('clean:dist', function() {
-  return del.sync(['dist/**/*', 'dist/images', 'dist/images/**/*']);
+gulp.task('clean:docs', function() {
+  return del.sync(['docs/**/*', 'docs/images', 'docs/images/**/*']);
 });
 
 // Build Sequences
@@ -149,9 +148,7 @@ gulp.task('default', function(callback) {
 
 gulp.task('build', function(callback) {
   runSequence(
-    'clean:dist',
-    'sass',
-    ['useref', 'images:minify', 'fonts'],
+    'clean:docs', ['useref', 'fonts'],
     callback
   )
 })

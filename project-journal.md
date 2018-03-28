@@ -329,4 +329,21 @@ I should make it tablet now. Won't take much.
 
 10:49am - wtf did just happen? It was wierd. I feel wierd. This whole morning is weird.
 
-11:57am - gulp is reloading the browser and compling sass yet it doesn't inject the style changes. I don't understand the reason. Need to look more into it. The problem is that sass doesn't update the css file at its destination. 
+11:57am - gulp is reloading the browser and compling sass yet it doesn't inject the style changes. I don't understand the reason. Need to look more into it. The problem is that 
+sass doesn't update the css file at its destination. 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+## Day 8 - Wed 28/3/18
+6:01am - The problem was something the program yesterday because today works. 
+Ok so I should style the modal.
+
+6:53am  - the problem still pops up. At times sass compiles, at times doesn't. 
+
+6:59am  - can't take it anymore, changed watch directly to css file. Now works. 
+
+7:28am - now the bar doesn't show the assigned style.
+
+9:36pm - it was a bug in brackers. ok so now I've styled the title as to give it db font and made cards round, w/border. So now they look like actual dragon balls. 
+The thing left could be modal customization. Now it's gray.
