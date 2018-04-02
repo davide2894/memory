@@ -64,6 +64,7 @@ body {
     color: #ff0000;
 }
 */
+
 .header__title--memory {
     color: #f7ff00;
 }
@@ -167,7 +168,7 @@ body {
 }
 
 .card {
-    margin: .5em .1em;
+    margin: 1em;
     max-width: 100%;
 }
 
@@ -194,8 +195,8 @@ body {
 .flip-container,
 .card__front,
 .card__back {
-    width: 8em;
-    height: 8em;
+    width: 4em;
+    height: 4em;
     border-radius: 6em;
 }
 
@@ -310,7 +311,7 @@ body {
 
 .modal {
     display: none;
-/*
+    /*
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-box;
@@ -356,16 +357,15 @@ body {
     animation-name: fadeIn;
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
-    background-color: #f7b056; /* fallback */ 
+    background-color: #f7b056;
+    /* fallback */
     background-color: #efae56;
-    -webkit-box-shadow: 
-        0 0 0 1px #000,
-        0 0 0 10px #ad0000,
-        0 0 0 1px #000;
-    box-shadow: 
-        0 0 0 1px #000,
-        0 0 0 10px #ad0000,
-        0 0 0 1px #000;
+    -webkit-box-shadow: 0 0 0 1px #000,
+    0 0 0 10px #ad0000,
+    0 0 0 1px #000;
+    box-shadow: 0 0 0 1px #000,
+    0 0 0 10px #ad0000,
+    0 0 0 1px #000;
 }
 
 .modal__header {
@@ -425,6 +425,15 @@ body {
     -----------------------------------------
 */
 
+@media screen and (min-width: 340px) {
+    .flip-container,
+    .card__front,
+    .card__back {
+        width: 5em;
+        height: 5em;
+    }
+}
+
 @media screen and (min-width: 350px) {
     .header {
         font-size: 1.8em;
@@ -448,9 +457,35 @@ body {
     }
 }
 
+@media screen and (min-width: 400px) {
+    .flip-container,
+    .card__front,
+    .card__back {
+        width: 5.5em;
+        height: 5.5em;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .flip-container,
+    .card__front,
+    .card__back {
+        width: 6.5em;
+        height: 6.5em;
+    }
+}
+
+
 @media screen and (min-width: 650px) {
     .wrapper {
         max-width: 650px;
         margin: 0 auto;
+    }
+    .flip-container,
+    .card__front,
+    .card__back {
+        width: 8em;
+        height: 8em;
+        border-radius: 6em;
     }
 }
