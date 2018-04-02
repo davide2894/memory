@@ -195,8 +195,8 @@ body {
 .flip-container,
 .card__front,
 .card__back {
-    width: 4em;
-    height: 4em;
+    width: 6.5em;
+    height: 6.5em;
     border-radius: 6em;
 }
 
@@ -425,15 +425,6 @@ body {
     -----------------------------------------
 */
 
-@media screen and (min-width: 340px) {
-    .flip-container,
-    .card__front,
-    .card__back {
-        width: 5em;
-        height: 5em;
-    }
-}
-
 @media screen and (min-width: 350px) {
     .header {
         font-size: 1.8em;
@@ -461,17 +452,17 @@ body {
     .flip-container,
     .card__front,
     .card__back {
-        width: 5.5em;
-        height: 5.5em;
-    }
+        width: 6.8em;
+        height: 6.8em;
+    } 
 }
 
 @media screen and (min-width: 500px) {
     .flip-container,
     .card__front,
     .card__back {
-        width: 6.5em;
-        height: 6.5em;
+        width: 7em;
+        height: 7em;
     }
 }
 
@@ -486,6 +477,6 @@ body {
     .card__back {
         width: 8em;
         height: 8em;
-        border-radius: 6em;
+        //border-radius: 6em;
     }
 }
