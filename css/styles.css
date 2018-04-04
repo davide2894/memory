@@ -146,6 +146,30 @@ body {
     }
 }
 
+@-webkit-keyframes scaleInOut {
+    0% {-webkit-transform: scale(1.1);transform: scale(1.1);}25% 
+    
+    25% {-webkit-transform: scale(1.25);transform: scale(1.25);}
+    
+    50% {-webkit-transform: scale(1.5);transform: scale(1.5);}
+    
+    75% {-webkit-transform: scale(1.25);transform: scale(1.25);}
+    
+    100% {-webkit-transform: scale(1);transform: scale(1);}
+}
+
+@keyframes scaleInOut {
+    0% {-webkit-transform: scale(1.1);transform: scale(1.1);}25% 
+    
+    25% {-webkit-transform: scale(1.25);transform: scale(1.25);}
+    
+    50% {-webkit-transform: scale(1.5);transform: scale(1.5);}
+    
+    75% {-webkit-transform: scale(1.25);transform: scale(1.25);}
+    
+    100% {-webkit-transform: scale(1);transform: scale(1);}
+}
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -339,7 +363,14 @@ body {
     max-width: 40%;
 }
 
-.match-animation {
+.scale-animation {
+    -webkit-animation-name: scaleInOut;
+    animation-name: scaleInOut;
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+}
+
+.shake-animation {
     -webkit-animation-name: shakeIt;
     animation-name: shakeIt;
     -webkit-animation-duration: 0.2s;
@@ -352,14 +383,11 @@ body {
     transition: 0.5s;
 }
 
-/*
 .span--hide,
 .card__letter {
     display: none;
 }
 
-
-*/
 
 /*
     -----------------------------------------

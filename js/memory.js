@@ -102,15 +102,15 @@ for (let card of cards) {
 
                         // trigger match animation 
                         setTimeout(function () {
-                            cardOne.classList.add('match-animation');
-                            cardTwo.classList.add('match-animation');
+                            cardOne.classList.add('scale-animation');
+                            cardTwo.classList.add('scale-animation');
                         }, 500);
                         setTimeout(function () {
                             cardOneBackSide.classList.add('change-back-color');
                             cardTwoBackSide.classList.add('change-back-color');
                         }, 1000);
-                        
-                        
+
+
 
                         // check win
                         if (matchedCards.length === 16) {
@@ -122,13 +122,20 @@ for (let card of cards) {
 
 
                     } else if (cardOneSpan !== cardTwoSpan) {
+                        
+                        // trigger not-a-match animation
+                        setTimeout(function () {
+                            cardOne.classList.add('shake-animation');
+                            cardTwo.classList.add('shake-animation');
+                        }, 500);
 
-                        //console.log('retry');
-
+                        // flip cards back
                         setTimeout(function () {
                             flipCardBack(cardOne);
                             flipCardBack(cardTwo);
-                        }, 500);
+                            cardOne.classList.remove('shake-animation');
+                            cardTwo.classList.remove('shake-animation');
+                        }, 1000);
                     }
                     clickCounter = 0;
                 }
