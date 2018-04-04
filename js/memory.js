@@ -20,6 +20,7 @@ var moveCounter = document.getElementById('move-counter'),
     userMoves = document.getElementById('user-moves'),
     userStars = document.getElementById('user-stars'),
     userFinalScore = document.getElementById('user-final-score'),
+    punchSound = document.getElementById('audio'),
     seconds = 0,
     minutes = 0,
     hours = 0,
@@ -28,13 +29,16 @@ var moveCounter = document.getElementById('move-counter'),
     cardOne = "",
     cardOneID = "",
     cardOneSpan = "",
+    cardOneBackSide = "",
     cardTwo = "",
     cardTwoID = "",
     cardTwoSpan = "",
+    cardTwoBackSide = "",
     matchedCards = [],
     gameStarted = false,
     restartBtn = document.getElementById('restart'),
-    starNumber = 0;
+    starNumber = 0,
+    touchCount = 0;
 
 shuffleCards();
 
@@ -58,8 +62,8 @@ for (let card of cards) {
             if (clickCounter === 1) {
 
                 //console.log("clickCounter = " + clickCounter);
-
                 getCardOneInfo(card);
+                console.log(cardOneBackSide);
                 //console.log(cardOneSpan, cardOneID, card.classList);
                 flipCard(card);
 
@@ -71,6 +75,9 @@ for (let card of cards) {
 
 
                 getCardTwoInfo(card);
+
+                console.log(cardTwo);
+
                 //console.log(cardTwoSpan, cardTwoID);
                 // if user clicks same card
                 if (cardOneID === cardTwoID) {
@@ -90,14 +97,25 @@ for (let card of cards) {
                     if (cardOneSpan === cardTwoSpan) {
 
                         //console.log('there is a match');
-
                         matchedCards.push(cardOneID);
                         matchedCards.push(cardTwoID);
+
+                        // trigger match animation 
+                        setTimeout(function () {
+                            cardOne.classList.add('match-animation');
+                            cardTwo.classList.add('match-animation');
+                        }, 500);
+                        setTimeout(function () {
+                            cardOneBackSide.classList.add('change-back-color');
+                            cardTwoBackSide.classList.add('change-back-color');
+                        }, 1000);
+                        
+                        
 
                         // check win
                         if (matchedCards.length === 16) {
 
-                            // invoke win fn
+                            // call win fn
                             setTimeout(winGame, 500);
 
                         }
@@ -119,7 +137,7 @@ for (let card of cards) {
     })
 }
 
-restartBtn.addEventListener('click', function(){
+restartBtn.addEventListener('click', function () {
     restart();
 })
 
@@ -135,12 +153,14 @@ function getCardOneInfo(element) {
     cardOneSpan = element.querySelector('span').textContent;
     cardOneID = element.id;
     cardOne = element;
+    cardOneBackSide = cardOne.querySelector('.card__back');
 }
 
 function getCardTwoInfo(element) {
     cardTwoSpan = element.querySelector('span').textContent;
     cardTwoID = element.id;
     cardTwo = element;
+    cardTwoBackSide = cardTwo.querySelector('.card__back');
 }
 
 function trackScore() {
@@ -246,7 +266,7 @@ function startGame() {
 }
 
 function restart() {
-    
+
     //stop timer;
     clearTimeout(timer);
 
@@ -303,4 +323,22 @@ function winGame() {
             modalBox.style.display = "none";
         }
     })
+}
+
+// handles touch event on smartphones and tablets
+function handleTouch(card) {
+
+    touchCount++;
+
+    if (touchCount === 1) {
+        flipCard(card);
+
+    } else {
+        touchCount = 0;
+    }
+
+}
+
+function playTouchSound() {
+    punchSound.play();
 }

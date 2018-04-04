@@ -80,6 +80,19 @@ body {
 /*
     -----------------------------------------
     -----------------------------------------
+                    AUDIO
+    -----------------------------------------
+    -----------------------------------------
+*/
+
+.audio {
+    display: none;
+}
+
+
+/*
+    -----------------------------------------
+    -----------------------------------------
                     KEYFRAMES
     -----------------------------------------
     -----------------------------------------
@@ -100,6 +113,36 @@ body {
     }
     to {
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes shakeIt {
+    0% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+    50% {
+        -webkit-transform: translateX(-4px);
+        transform: translateX(-4px);
+    }
+    80% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+}
+
+@keyframes shakeIt {
+    0% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+    50% {
+        -webkit-transform: translateX(-4px);
+        transform: translateX(-4px);
+    }
+    80% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
     }
 }
 
@@ -296,10 +339,27 @@ body {
     max-width: 40%;
 }
 
+.match-animation {
+    -webkit-animation-name: shakeIt;
+    animation-name: shakeIt;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+}
+
+.change-back-color {
+    background: #009f00;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+/*
 .span--hide,
 .card__letter {
     display: none;
 }
+
+
+*/
 
 /*
     -----------------------------------------
@@ -454,7 +514,7 @@ body {
     .card__back {
         width: 6.8em;
         height: 6.8em;
-    } 
+    }
 }
 
 @media screen and (min-width: 500px) {
@@ -476,7 +536,6 @@ body {
     .card__front,
     .card__back {
         width: 8em;
-        height: 8em;
-        //border-radius: 6em;
+        height: 8em; //border-radius: 6em;
     }
 }

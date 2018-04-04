@@ -342,8 +342,41 @@ Ok so I should style the modal.
 6:53am  - the problem still pops up. At times sass compiles, at times doesn't. 
 
 6:59am  - can't take it anymore, changed watch directly to css file. Now works. 
-
+    
 7:28am - now the bar doesn't show the assigned style.
 
 9:36am - it was a bug in brackers. ok so now I've styled the title as to give it db font and made cards round, w/border. So now they look like actual dragon balls. 
 The thing left could be modal customization. Now it's gray.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+## Day 10  - Tue 3/4/18
+7:55am - theory: handle double touch with function to replace in ontouchstart=""; in html. 
+I should use a counter var at each touch. Something like
+-- ontouchstart(btn):
+    - touchcount++:
+        - if count === 0:
+            * flip
+        - if count > 1:
+            * prevent it
+            * reset count to 0
+I have ontouch in html. Ontouch triggers the function. The function should just count and do some things depening on the count number.
+8:47pm - fixed.
+
+11:55am - it works but console outputs an error each time the event handler is fired, stating it's argument is not defineds
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+## Day 11  - Wed 4/4/18
+9:20am - woke up late due to all family time previous days. Code anyway because done is better than perfect. Show up everyday.
+I should add a match animation to add right after cards are flipped and match is recognized.
+What kind of animation could I use?
+
+10:42am - I created the animation. Now, when there's win condition, it should be triggered with js. Something like I 
+
+12:43pm - on codepen it works as I expect but when I add it to the actual project it doesn't. I see that the animation is added when there's a match, so that' ok. 
+Still, it doesn't show the effect in action. Wait, I should add the animaiton to the card__back, not on card.
+
+1:18pm - the animation works partially now. The keyframe doesn't...Should check why. 
+
+1:24pm - it was a typo again. Now it works but doesn't shake, it disappears and reappers briefly.
