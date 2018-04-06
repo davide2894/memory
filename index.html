@@ -33,15 +33,18 @@
 </head>
 
 <body>
-   <audio src="audio/dbz-medium-punch.wav" class="audio" id="audio">The audio is not supported</audio>
-   
     <div class="wrapper">
+        <audio class="audio" id="punch-sound" src="audio/dbz-medium-punch.wav">
+            The audio is not supported
+        </audio>
 
         <header class="header">
             <h1 class="header__title header__title--memory">
-            <!-- <span class="header__title--ki">Ki</span><span class="header__title--o">o</span><span class="header__title--ku">Ku</span> -->
-            <span class="header__title--mem">Mem</span><span class="header__title--o">o</span><span class="header__title--ry">ry</span>
-            <h1 class="header__title header__title--game">Game</h1>
+                <span class="header__title--ki">Ki</span><span class="header__title--o">o</span><span- class="header__title--ku">Ku</span>
+                    <!-- <span class="header__title--mem">Mem</span><span class="header__title--o">o</span><span class="header__title--ry">ry</span>-->
+            </h1>
+            <h2 class="header__subtitle">
+                A <span class="header__subtitle--dragon-ball"><span class="header__title--ki">Drag</span><span class="header__title--o">o</span><span class="header__title--ki">n</span><span class="header__title--ku">Ball</span></span>-based memory game</h2>
         </header>
 
         <main>
@@ -61,7 +64,7 @@
                         00:00:00
                    </time>
                 </div>
-                <i class="fas fa-redo-alt fa-2x bar__restart" id="restart"></i>
+                <i class="fas fa-redo-alt fa-2x bar__restart hoverable" id="restart"></i>
 
             </section>
 
@@ -270,7 +273,7 @@
                         <h2 class="modal__h2">
                             Congratulations!
                         </h2>
-                        <span class="modal__x" id="modal-x">&times;</span>
+                        <span class="modal__x hoverable" id="modal-x">&times;</span>
                     </div>
 
                     <p class="modal__text">
@@ -278,7 +281,7 @@
                         <span class="user__final-score" id="user-final-score">__</span>
                     </p>
 
-                    <button class="modal__btn" id="modal-btn">Play again!</button>
+                    <button class="modal__btn hoverable" id="modal-btn">Play again!</button>
                 </div>
             </section>
 

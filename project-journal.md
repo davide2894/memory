@@ -38,6 +38,8 @@ v18. adust sprite sizes
 - do tablet
 - do mobile
 
+- add match and wrong match animation
+
 
 ## Day 1 - Monday 19 March 2018
 9:37 am - calm down. While it feels the most huge project I encountered so far, all I need is to divide and conquer. As Udacity says: you don't build a house all at once, but brick by brick. So.
@@ -350,7 +352,7 @@ The thing left could be modal customization. Now it's gray.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-## Day 10  - Tue 3/4/18
+## Day 9 - Tue 3/4/18
 7:55am - theory: handle double touch with function to replace in ontouchstart=""; in html. 
 I should use a counter var at each touch. Something like
 -- ontouchstart(btn):
@@ -367,7 +369,7 @@ I have ontouch in html. Ontouch triggers the function. The function should just 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-## Day 11  - Wed 4/4/18
+## Day 10 - Wed 4/4/18
 9:20am - woke up late due to all family time previous days. Code anyway because done is better than perfect. Show up everyday.
 I should add a match animation to add right after cards are flipped and match is recognized.
 What kind of animation could I use?
@@ -380,3 +382,10 @@ Still, it doesn't show the effect in action. Wait, I should add the animaiton to
 1:18pm - the animation works partially now. The keyframe doesn't...Should check why. 
 
 1:24pm - it was a typo again. Now it works but doesn't shake, it disappears and reappers briefly.
+
+## Day 11 - Fri 6/4/18
+8:09am - I can say that if card belongs to the matched cards array, then this card:
+- doesn't have hover anymore
+- isn't cliclable anymore
+
+To remove hover after match, add .hoverable class to 2 selected cards, match them and then remove classes. Remove them. Test

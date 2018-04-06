@@ -30,6 +30,7 @@ table {
 
 body {
     background-color: #171314;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .wrapper {
@@ -38,33 +39,40 @@ body {
 
 .header {
     margin-top: 2em;
+    text-align: center;
 }
 
-.header__title {
-    text-align: center;
-    font-family: 'Press Start 2P', cursive;
+.header__title,
+.header__subtitle--dragon-ball {
     font-family: 'Saiyan-Sans';
 }
 
 .header__title {
-    font-size: 4em;
+    font-size: 8em;
     text-transform: uppercase;
 }
 
-/*
 .header__title--ki {
     color: #f7ff00;
 }
 
 .header__title--o {
-    color: #f7a100
+    color: #f7a100;
 }
 
 .header__title--ku {
     color: #ff0000;
 }
-*/
 
+.header__subtitle {
+    color: #fff;
+    font-size: 2em;
+}
+
+
+
+
+/*
 .header__title--memory {
     color: #f7ff00;
 }
@@ -75,6 +83,8 @@ body {
 
 .header__title--game {
     color: #ff0000;
+*/
+
 }
 
 /*
@@ -88,7 +98,6 @@ body {
 .audio {
     display: none;
 }
-
 
 /*
     -----------------------------------------
@@ -147,27 +156,55 @@ body {
 }
 
 @-webkit-keyframes scaleInOut {
-    0% {-webkit-transform: scale(1.1);transform: scale(1.1);}25% 
-    
-    25% {-webkit-transform: scale(1.25);transform: scale(1.25);}
-    
-    50% {-webkit-transform: scale(1.5);transform: scale(1.5);}
-    
-    75% {-webkit-transform: scale(1.25);transform: scale(1.25);}
-    
-    100% {-webkit-transform: scale(1);transform: scale(1);}
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    25% 25% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+
+    50% {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+
+    75% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
 
 @keyframes scaleInOut {
-    0% {-webkit-transform: scale(1.1);transform: scale(1.1);}25% 
-    
-    25% {-webkit-transform: scale(1.25);transform: scale(1.25);}
-    
-    50% {-webkit-transform: scale(1.5);transform: scale(1.5);}
-    
-    75% {-webkit-transform: scale(1.25);transform: scale(1.25);}
-    
-    100% {-webkit-transform: scale(1);transform: scale(1);}
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    25% 25% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+
+    50% {
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+
+    75% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
 
 /*
@@ -179,7 +216,6 @@ body {
 */
 
 .bar {
-    font-family: 'Roboto', 'sans-serif';
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -199,7 +235,7 @@ body {
     font-size: 2em;
 }
 
-.bar__restart:hover,
+/*.bar__restart:hover,*/
 .modal__x:hover,
 .modal__btn:hover {
     cursor: pointer;
@@ -246,18 +282,20 @@ body {
 
 /* flip card on hover */
 
+
 .flip-container:hover {
     cursor: pointer;
 }
+
 
 .flip-container.hover .flipper {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
-/* .flip-container.hover-back .flipper {
+.flip-container.hover-back .flipper {
     transform: rotateY(-180deg);
-} */
+} 
 
 .flip-container,
 .card__front,
@@ -383,10 +421,12 @@ body {
     transition: 0.5s;
 }
 
+/*
 .span--hide,
 .card__letter {
     display: none;
 }
+*/
 
 
 /*
@@ -505,6 +545,10 @@ body {
     font-weight: 800;
 }
 
+.hoverable {
+    cursor: pointer;
+}
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -513,16 +557,12 @@ body {
     -----------------------------------------
 */
 
+/*
 @media screen and (min-width: 350px) {
-    .header {
-        font-size: 1.8em;
-    }
 }
+*/
 
 @media screen and (min-width: 400px) {
-    .header {
-        font-size: 2em;
-    }
     .card__sprite--piccolo {
         max-width: 45%;
     }
@@ -534,9 +574,6 @@ body {
     .modal__text {
         font-size: 1.2em;
     }
-}
-
-@media screen and (min-width: 400px) {
     .flip-container,
     .card__front,
     .card__back {
@@ -545,7 +582,19 @@ body {
     }
 }
 
+@media screen and (min-width: 420px) {
+    .header__title {
+        font-size: 8.5em;
+    }    
+    .header__subtitle {
+        font-size: 2.5em;
+    }
+}
+
 @media screen and (min-width: 500px) {
+    .header__title {
+        font-size: 14em;
+    }
     .flip-container,
     .card__front,
     .card__back {

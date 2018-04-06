@@ -20,7 +20,6 @@ var moveCounter = document.getElementById('move-counter'),
     userMoves = document.getElementById('user-moves'),
     userStars = document.getElementById('user-stars'),
     userFinalScore = document.getElementById('user-final-score'),
-    punchSound = document.getElementById('audio'),
     seconds = 0,
     minutes = 0,
     hours = 0,
@@ -40,10 +39,13 @@ var moveCounter = document.getElementById('move-counter'),
     starNumber = 0,
     touchCount = 0;
 
+
 shuffleCards();
 
 for (let card of cards) {
     card.addEventListener('click', function () {
+
+        playPunchSound();
 
         if (!gameStarted) {
 
@@ -54,8 +56,12 @@ for (let card of cards) {
 
         if (matchedCards.includes(card.id)) {
 
-            //console.log("this card is already matched", clickCounter);
-
+            // console.log("this card is already matched", clickCounter);
+            
+            // remove cursor: pointer on hover
+            
+            // disable clicks on card
+            
         } else {
             clickCounter++;
 
@@ -122,7 +128,7 @@ for (let card of cards) {
 
 
                     } else if (cardOneSpan !== cardTwoSpan) {
-                        
+
                         // trigger not-a-match animation
                         setTimeout(function () {
                             cardOne.classList.add('shake-animation');
@@ -346,6 +352,9 @@ function handleTouch(card) {
 
 }
 
-function playTouchSound() {
+function playPunchSound() {
+    var punchSound = document.getElementById('punch-sound');
+    console.log("playing sound...");
+    punchSound.load();
     punchSound.play();
 }
