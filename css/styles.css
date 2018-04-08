@@ -283,9 +283,11 @@ body {
 /* flip card on hover */
 
 
+/*
 .flip-container:hover {
     cursor: pointer;
 }
+*/
 
 
 .flip-container.hover .flipper {
@@ -421,9 +423,15 @@ body {
     transition: 0.5s;
 }
 
+/*
 .span--hide,
 .card__letter {
     display: none;
+}
+*/
+
+.no-pointer {
+    pointer-events: none;
 }
 
 

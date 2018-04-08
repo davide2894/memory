@@ -388,4 +388,15 @@ Still, it doesn't show the effect in action. Wait, I should add the animaiton to
 - doesn't have hover anymore
 - isn't cliclable anymore
 
-To remove hover after match, add .hoverable class to 2 selected cards, match them and then remove classes. Remove them. Test
+To remove hover after match, add .hoverable class to 2 selected cards, match them and then remove classes. Remove them. Test.
+
+## Day 11 - 8/4/18
+11:33am - click and hover get toggled as necessary. 
+
+The problem is color. Because it toggles on the card back side, which is obtained only when two cards are matched. So at the moment of restarting, the toggle actually doesn't work. 
+
+11:46am - works.
+
+Now problem is Piccolo n8 that shakes at restart. Doesn't do it anymore.
+
+12:25am - to add click limit. After 2 clicks disable cards. Now user can click all the cards he wants. 

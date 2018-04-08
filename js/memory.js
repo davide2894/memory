@@ -37,12 +37,14 @@ var moveCounter = document.getElementById('move-counter'),
     gameStarted = false,
     restartBtn = document.getElementById('restart'),
     starNumber = 0,
-    touchCount = 0;
+    touchCount = 0,
+    cardBackSide = "";
 
 
 shuffleCards();
 
 for (let card of cards) {
+    
     card.addEventListener('click', function () {
 
         playPunchSound();
@@ -54,13 +56,9 @@ for (let card of cards) {
             // console.log("gameStarted after startGame() is invoked = " + gameStarted);
         }
 
-        if (matchedCards.includes(card.id)) {
-
-            // console.log("this card is already matched", clickCounter);
+        if (matchedCards.includes(card)) {
             
-            // remove cursor: pointer on hover
-            
-            // disable clicks on card
+            return;     
             
         } else {
             clickCounter++;
@@ -68,34 +66,29 @@ for (let card of cards) {
             if (clickCounter === 1) {
 
                 //console.log("clickCounter = " + clickCounter);
+                
                 getCardOneInfo(card);
                 console.log(cardOneBackSide);
+                
                 //console.log(cardOneSpan, cardOneID, card.classList);
+                
                 flipCard(card);
 
                 //console.log("card1 opened");
 
             } else if (clickCounter === 2) {
-
-                //console.log("clickCounter = " + clickCounter);
-
-
                 getCardTwoInfo(card);
 
                 console.log(cardTwo);
 
-                //console.log(cardTwoSpan, cardTwoID);
                 // if user clicks same card
                 if (cardOneID === cardTwoID) {
+                    
                     clickCounter = 1;
-
-                    //console.log("clicked same card");
-
+                    
                 } else {
 
                     flipCard(card);
-
-                    //console.log('card2 opened');
 
                     trackScore();
 
@@ -103,27 +96,32 @@ for (let card of cards) {
                     if (cardOneSpan === cardTwoSpan) {
 
                         //console.log('there is a match');
-                        matchedCards.push(cardOneID);
-                        matchedCards.push(cardTwoID);
+                        matchedCards.push(cardOne);
+                        matchedCards.push(cardTwo);
 
                         // trigger match animation 
                         setTimeout(function () {
-                            cardOne.classList.add('scale-animation');
-                            cardTwo.classList.add('scale-animation');
+
+                            toggleScaleAnimation(cardOne);
+                            toggleScaleAnimation(cardTwo);
+
                         }, 500);
                         setTimeout(function () {
-                            cardOneBackSide.classList.add('change-back-color');
-                            cardTwoBackSide.classList.add('change-back-color');
+
+                            toggleColorAnimation(cardOneBackSide);
+                            toggleColorAnimation(cardTwoBackSide);
+
                         }, 1000);
 
-
+                        // remove cursor: pointer on hover
+                        disableCard(cardOne);
+                        disableCard(cardTwo);
 
                         // check win
-                        if (matchedCards.length === 16) {
+                        if(matchedCards.length === 16) {
 
                             // call win fn
                             setTimeout(winGame, 500);
-
                         }
 
 
@@ -143,9 +141,11 @@ for (let card of cards) {
                             cardTwo.classList.remove('shake-animation');
                         }, 1000);
                     }
+                    
                     clickCounter = 0;
                 }
             }
+            
         }
     })
 }
@@ -174,6 +174,10 @@ function getCardTwoInfo(element) {
     cardTwoID = element.id;
     cardTwo = element;
     cardTwoBackSide = cardTwo.querySelector('.card__back');
+}
+
+function getCardBackSie(element){
+    cardBackSide = element.querySelector('.card__back');
 }
 
 function trackScore() {
@@ -280,6 +284,7 @@ function startGame() {
 
 function restart() {
 
+    /*
     //stop timer;
     clearTimeout(timer);
 
@@ -306,6 +311,19 @@ function restart() {
 
     console.log("gameStarted after restart btn is clicked = " + gameStarted);
 
+    for (let matchedCard of matchedCards) {
+        console.log('...printing matchedCard classList...' + matchedCard.classList);
+        toggleScaleAnimation(matchedCard);
+        getCardBackSie(matchedCard);
+        toggleColorAnimation(cardBackSide);
+        enableCard(matchedCard);
+        console.log('after...printing matchedCard classList...' + matchedCard.classList);
+    }
+    matchedCards = [];
+    */
+    // reload page using browser cache
+    window.location.reload(false);
+    
 }
 
 // 13. handle win
@@ -320,6 +338,7 @@ function winGame() {
 
     modalBox.style.display = "block";
 
+    // communicate score
     if (starNumber === 3) {
         userFinalScore.textContent = 'Excellent!';
     } else if (starNumber === 2) {
@@ -328,11 +347,12 @@ function winGame() {
         userFinalScore.textContent = 'You can do better';
     }
 
+    // reset on modal close
     document.addEventListener('click', function (event) {
         if (event.target === modalX || event.target === modalBtn) {
-            // empty array of matched cards
-            matchedCards = [];
+
             restart();
+
             modalBox.style.display = "none";
         }
     })
@@ -357,4 +377,38 @@ function playPunchSound() {
     console.log("playing sound...");
     punchSound.load();
     punchSound.play();
+}
+
+function removeHover(element) {
+    element.classList.remove('hoverable');
+}
+
+function toggleScaleAnimation(element) {
+    element.classList.toggle('scale-animation');
+}
+
+function toggleColorAnimation(element) {
+    element.classList.toggle('change-back-color');
+}
+
+function disableClick(element) {
+    element.classList.add('no-pointer');
+}
+
+function disableCard(element) {
+    removeHover(element);
+    disableClick(element);
+}
+
+function addHover(element) {
+    element.classList.add('hoverable');
+}
+
+function enableClick(element) {
+    element.classList.remove('no-pointer');
+}
+
+function enableCard(element) {
+    addHover(element);
+    enableClick(element);
 }
