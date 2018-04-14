@@ -264,10 +264,9 @@
 
             </section>
 
-            <!-- Modal box to display when user wins the game -->
-
-            <section class="modal" id="win-modal">
-                <div class="modal__content">
+            <!--WIN MODAL-->
+            <section class="modal modal--win" id="win-modal">
+                <div class="modal__content modal__content--win">
 
                     <div class="modal__header">
                         <h2 class="modal__h2">
@@ -281,8 +280,54 @@
                         <span class="user__final-score" id="user-final-score">__</span>
                     </p>
 
-                    <button class="modal__btn hoverable" id="modal-btn">Play again!</button>
+                    <div class="modal__user-action">
+
+                        <form class="modal__form">
+                            <input type="text" class="form__input" id="input" placeholder="Your name">
+                            <button class="form__submit fa fa-arrow-right" id="form-submit"></button>
+                        </form>
+
+                        <p class="modal__or">
+                            or
+                        </p>
+
+                        <button class="modal__btn hoverable" id="modal-btn">Play again!</button>
+                    </div>
+
                 </div>
+            </section>
+            <!--PLAYERS RANK MODAL-->
+            <section class="modal modal--rank" id="rank-modal">
+                <table class="modal__content modal__content--rank">
+                    <thead class="thead">
+                        <tr class="tr tr--titles">
+                            <th class="th th--position">Pos.</th>
+                            <th class="th th--name">Name</th>
+                            <th class="th th--time">Time</th>
+                            <th class="th th--moves">Moves</th>
+                            <th class="th th--stars">Stars</th>
+                            <th class="th th--final-score">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="tbody">
+                         <!-- TODO: APPEND PLAYER OBJECTS AS THEY GET CREATED -->
+                         <tr class="tr tr--new-player">
+                             <td class="td td--pos">1.</td>
+                             <td class="td td--name">X</td>
+                             <td class="td td--time">
+                                 00:00:20
+                             </td>
+                             <td class="td td--moves">
+                                 14
+                             </td>
+                             <td class="td td--stars">2</td>
+                             <td class="td td--score">Good</td>
+                         </tr>
+                    </tbody>
+
+                </table>
+               
+
             </section>
 
         </main>

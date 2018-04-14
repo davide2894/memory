@@ -400,3 +400,180 @@ The problem is color. Because it toggles on the card back side, which is obtaine
 Now problem is Piccolo n8 that shakes at restart. Doesn't do it anymore.
 
 12:25am - to add click limit. After 2 clicks disable cards. Now user can click all the cards he wants. 
+
+Day 12 - 9/4/18 
+5:44am - ok. After 2 clicks, target match/unmatch loop part. Not animation, but at the moment it detects match/unmatch. Correction: when click === 2. 
+
+Show write a fn that disables all cards except the selected two. Maybe create anoher array, named selectedCards[], that at first click takes 1st card, at second takes 2nd card. Then do something and empty said array. 
+I already have a fn to disable a single card. Inside the main loop, it does something only when there's a click. So on 2nd click, how do I target the rest of the cards? 
+
+fn disableAllCards:
+I can select all cards with queryall. 
+Then, check if selectedCards[] has one of the elements selected: 
+- If so: ignore them 
+- else: disable it.
+
+So:
+* declare selectedCards[]
+* on 1st & 2nd click push card into array
+* on 2nd click: invoke disableOtherCards
+* if match & if not-a-match (precisely, after either animation triggered):
+    * empty selectedCards[]
+    * enableAllCards (create this fn)
+
+Should probably try. Plan:
+1. handle disableAllCards
+    * declare array
+    * add push to arr
+    * make fn
+    * place it 
+    * empty selectedCards[] after animations
+
+2. handle enableAllCards:
+    * create enableAllCards fn
+    * invoke it after animations
+    
+fn() enableOtherCards:
+should find a way to recognize if a card has been disabled but is not in selected cards. 
+
+Unselected cards are disabled during the time window exisiting between the second click and the end of the animations. 
+
+During this time window, I still have the two cards clicked in the selectedCards array. So in this very moment all cards are disabled, the two animating too. Here, after animation, since we lack a match, cards get flipped back and enabled again. 
+
+So in our time window everything is disabled. After it ends, selected cards are reenabled. I can...oh. Apply same logic used in prev case but with diff fn. Hm.
+
+BUG: if click multiple times on same card game freezes. 
+SOLUTION: regulated disablement of card.
+
+
+8:22am - 
+BUG: what if reset while only one card is flipped.
+SOLUTION: apparently I solved it when I refactored restart()
+
+
+8:27am - TODO: add players rank.
+On modal win screen, show input field at the bottom, with label 'Your name...'. When is submitted, show rank with top rank with all players. 
+
+Let's think baby-steps. There are two parts here:
+:* input field with name
+* rank to shows
+
+Input is first. Html, then CSS because I want to make it 80's-arcade-game-like.
+
+10:08am - input field should be at the bottom. Ok. Like:
+    Insert Name
+        or
+    Play Again (blinking)
+
+If name is submitted, then show rank modal.
+
+1:42pm - started working on player's rank->input but can't seem to finish it by today.
+
+If I make border-bottom visible, it blinks together with the placeholder. 
+
+Need to restrict blinking to only placeholder.
+
+TODO: 
+- restrict blinking to only placeholder. 
+    (if not create line w/pseudoelement)
+- use js to stop animation when input is clicked or has focus.
+
+## Day 12 - 10/4/18
+11:20am - solved prev.
+TODO: find a way to trigger blink animaition only when modal is displayed (has display: block);
+
+## Day 13 - 11/4/18
+8:06am - js doesn't recognize `display: block` in modal. Neither style.display nor style.visibility are working. In particular the === comparison.
+
+9:34am - input animation completed. 
+
+***break***
+
+9:40am - TODO: regulate form action
+
+9:48am - ok so I can register the value submitted. Now I need to:
+- store players score too. 
+- create rank
+- store players name in rank
+
+For storing a player's score, I can create an object named player.
+
+function Player(name, movesNum, time, stars){
+    this.name; (str)
+    this.time; (str)
+    this.movesNum; (int)
+    this.stars; (int)
+}
+
+and I can use a constructor fn to create instances of this object everytime a player submits its name. Like
+
+new Player(playerName, playerTime, playerMoves, playerStars, playerFinalScore )
+
+Once I have the object, I can organize the ank similar to how I organized pam grid; a table. I will create a table.
+
+Each time a player submits, Player's item make the html tr element, which is then appended to the table.
+
+Lastly, there is the proble to how organize players based on rank. Let's think that later. Let's make the rank now.
+
+11:08am - handled player obj. Need to create rank.
+* start with html: modal w/empty table.
+* handle player appending (logic like check if name exists)
+* handle screen switch
+
+## Day 13 - Thu 12/4/18
+6:18am - ok.
+HTML for this should be smth like
+table
+    tr
+        th Name
+        th Time
+        th Moves
+        th Stars
+        th Score
+    tr
+    
+    // this needs to be appended when user clicks on submit
+    tr
+        td playerName
+        td playerTime
+        td playerMoves
+        td playerStars
+        td playerScore
+    tr
+    
+There's also the position numbering. That should not be depending on the players, but shouuld be generated based on a loop w/evt listener.
+
+Rank should have same div look as win modal, only content is diff, of course.
+
+10:21am - minimum style accomplished. Now should hanlde player appending logic.
+
+So it should fire when name is submitted. So when said btn is clicked. But how should handle incoming data? They are just strings, after all. A list of strings. I can select and get them easily since they're in an obj. Hence, I can just write html an html string to append to tbody
+- create instance of Player 
+- create html string containing obj items 
+- append it to tbody
+
+## Day 14 - Fri 13/4/18
+6:27am - need to implement a scoreboard. I want it to save the player's score to the table I created. Problem is: appended data doesn't get saved, it gets erased on page refresh. Web based game are stateless, as it seems. Games developed in this way don't save their state: page gets reset and reloaded anew.
+
+If I think about it, to retrieve data from different browsers, from diff users, I need a backend. Some kind of.
+
+8:43am - I found a way to implment this. I created a db. Now should:
+1. install lamp stack 
+2. setup phpmyadmin to manage db
+3. use php to take data from db and send it to javascript.
+   Kind of like it was made with Udacity Wall
+4. handle received data w/js when button is clicked. 
+
+***
+
+1. installing lamp 
+10:25am - it took a lot because I didn't understand why it was showing php code instead of executing it. Turns out apache wasn't interpreting php. Ergo I had to enable the module. 
+
+Now phpmyadmin works. So lapm stack was installed successfully. 1 and 2 done.
+
+Options are: 
+- firebase 
+- ajax-php
+
+## Day 15 - Sat 14/4/18
+5:42am - ok. Ajax-php seems a better way to handle just this thing. it's one thing and I can use this opp to learn a bit of these two.

@@ -8,18 +8,24 @@
 
 // define variables
 const container = document.getElementById('container'),
-    cards = container.getElementsByClassName('flip-container'),
+    cards = container.getElementsByClassName('card'),
     star2 = document.getElementById('star-2'),
     star3 = document.getElementById('star-3'),
     modalBox = document.getElementById('win-modal'),
     modalX = document.getElementById('modal-x'),
-    modalBtn = document.getElementById('modal-btn');
+    modalBtn = document.getElementById('modal-btn'),
+    input = document.getElementById('input'),
+    formSubmit = document.getElementById('form-submit'),
+    modalRank = document.getElementById('rank-modal'),
+    tbody = document.getElementById('tbody');
 var moveCounter = document.getElementById('move-counter'),
     displayedTime = document.getElementById('displayed-time'),
-    userTime = document.getElementById('user-time'),
-    userMoves = document.getElementById('user-moves'),
-    userStars = document.getElementById('user-stars'),
-    userFinalScore = document.getElementById('user-final-score'),
+    player,
+    playerTime = document.getElementById('user-time'),
+    playerMoves = document.getElementById('user-moves'),
+    playerStars = document.getElementById('user-stars'),
+    playerFinalScore = document.getElementById('user-final-score'),
+    playerName,
     seconds = 0,
     minutes = 0,
     hours = 0,
@@ -34,6 +40,7 @@ var moveCounter = document.getElementById('move-counter'),
     cardTwoSpan = "",
     cardTwoBackSide = "",
     matchedCards = [],
+    selectedCards = [],
     gameStarted = false,
     restartBtn = document.getElementById('restart'),
     starNumber = 0,
@@ -44,7 +51,7 @@ var moveCounter = document.getElementById('move-counter'),
 shuffleCards();
 
 for (let card of cards) {
-    
+
     card.addEventListener('click', function () {
 
         playPunchSound();
@@ -57,40 +64,46 @@ for (let card of cards) {
         }
 
         if (matchedCards.includes(card)) {
-            
-            return;     
-            
+
+            return;
+
         } else {
             clickCounter++;
 
             if (clickCounter === 1) {
 
-                //console.log("clickCounter = " + clickCounter);
-                
                 getCardOneInfo(card);
-                console.log(cardOneBackSide);
-                
-                //console.log(cardOneSpan, cardOneID, card.classList);
-                
+
                 flipCard(card);
 
-                //console.log("card1 opened");
+                // add card to selected cards array
+                selectedCards.push(card);
+
+                // disable clicked card
+                disableCard(card);
 
             } else if (clickCounter === 2) {
+
                 getCardTwoInfo(card);
 
-                console.log(cardTwo);
-
-                // if user clicks same card
+                // if player clicks same card
                 if (cardOneID === cardTwoID) {
-                    
+
                     clickCounter = 1;
-                    
+
                 } else {
 
                     flipCard(card);
 
                     trackScore();
+
+                    selectedCards.push(card);
+
+                    // disable clicked card
+                    disableCard(card);
+
+                    // disable all other cards
+                    disableOtherCards();
 
                     // if there's a match
                     if (cardOneSpan === cardTwoSpan) {
@@ -114,11 +127,17 @@ for (let card of cards) {
                         }, 1000);
 
                         // remove cursor: pointer on hover
-                        disableCard(cardOne);
-                        disableCard(cardTwo);
+                        // disableCard(cardOne);
+                        // disableCard(cardTwo);
+
+                        // enableOtherCards()
+                        enableOtherCards();
+
+                        // empty selectedCards 
+                        selectedCards = [];
 
                         // check win
-                        if(matchedCards.length === 16) {
+                        if (matchedCards.length === 2) {
 
                             // call win fn
                             setTimeout(winGame, 500);
@@ -139,13 +158,23 @@ for (let card of cards) {
                             flipCardBack(cardTwo);
                             cardOne.classList.remove('shake-animation');
                             cardTwo.classList.remove('shake-animation');
+
+                            enableCard(cardOne);
+                            enableCard(cardTwo);
+
+                            // enable other cards
+                            enableOtherCards();
+
+                            // empty selectedCards 
+                            selectedCards = [];
+
                         }, 1000);
                     }
-                    
+
                     clickCounter = 0;
                 }
             }
-            
+
         }
     })
 }
@@ -176,7 +205,7 @@ function getCardTwoInfo(element) {
     cardTwoBackSide = cardTwo.querySelector('.card__back');
 }
 
-function getCardBackSie(element){
+function getCardBackSie(element) {
     cardBackSide = element.querySelector('.card__back');
 }
 
@@ -223,6 +252,7 @@ function nodeListToArray(nodeList) {
     for (let card of cards) {
         arr.push(card);
     }
+    // return a copy of arr for safety
     return arr.slice();
 }
 
@@ -267,7 +297,6 @@ function addTime() {
 function watchTime() {
     timer = setTimeout(addTime, 1000);
 }
-
 
 /* 
    10. add restart button, that on click:
@@ -323,29 +352,61 @@ function restart() {
     */
     // reload page using browser cache
     window.location.reload(false);
-    
+
 }
 
 // 13. handle win
 function winGame() {
-
-    // capture user time      
-    userTime.textContent = displayedTime.textContent;
-
-    userMoves.textContent = moveCounter.textContent;
-
-    userStars.textContent = starNumber.toString();
-
-    modalBox.style.display = "block";
+    // capture player score      
+    playerTime.textContent = displayedTime.textContent;
+    playerMoves.textContent = moveCounter.textContent;
+    playerStars.textContent = starNumber.toString();
 
     // communicate score
     if (starNumber === 3) {
-        userFinalScore.textContent = 'Excellent!';
+        playerFinalScore.textContent = 'Excellent!';
     } else if (starNumber === 2) {
-        userFinalScore.textContent = 'Good';
+        playerFinalScore.textContent = 'Good';
     } else {
-        userFinalScore.textContent = 'You can do better';
+        playerFinalScore.textContent = 'You can do better';
     }
+
+    // on form btn click, create player object
+    formSubmit.addEventListener('click', function (e) {
+        modalBox.style.display = 'none';
+        modalRank.style.display = 'block';        
+        
+        // prevent to send data
+        e.preventDefault();
+        // store player name
+        playerName = input.value;
+
+        // test if it was stored
+        console.log(playerName);
+
+        // create constructor fn for player
+        player = new Player(playerName, playerTime.textContent, playerMoves.textContent, playerStars.textContent, playerFinalScore.textContent);
+
+        // console.log('player obj-> ', player);
+        
+        console.log(JSON.stringify(player));
+
+        /*
+        // add current player to rank
+        let newRow = document.createElement('tr');
+        newRow.innerHTML = `<tr class="tr tr--new-player"><td class="td td--pos">1.</td><td class="td td--name">${player.name}</td><td class="td td--time">${player.time}</td><td class="td td--moves">${player.moves}</td><td class="td td--stars">${player.stars}</td><td class="td td--score">${player.finalScore}</td></tr>`; 
+        
+        tbody.appendChild(newRow);
+        */
+
+        // TODO: switch from win modal to rank modal
+        
+    })
+
+    modalBox.style.display = "block";
+
+    // check if modal is visible: if so, trigger input placeholder animation 
+    checkVisibility();
 
     // reset on modal close
     document.addEventListener('click', function (event) {
@@ -354,8 +415,18 @@ function winGame() {
             restart();
 
             modalBox.style.display = "none";
+
         }
     })
+}
+
+// create constructor fn for player
+function Player(name, time, moves, stars, finalScore) {
+    this.name = name;
+    this.time = time;
+    this.moves = moves;
+    this.stars = stars;
+    this.finalScore = finalScore;
 }
 
 // handles touch event on smartphones and tablets
@@ -411,4 +482,56 @@ function enableClick(element) {
 function enableCard(element) {
     addHover(element);
     enableClick(element);
+}
+
+function disableOtherCards() {
+
+    // convert Cards to Array
+    let cardsArr = nodeListToArray(cards);
+
+    for (let card of cardsArr) {
+
+        if (!selectedCards.includes(card)) {
+
+            // console.log('card in both selectedCards and otherCards: ', card);
+
+            disableCard(card);
+        }
+    }
+}
+
+function enableOtherCards() {
+
+    // convert Cards to Array
+    let cardsArr = nodeListToArray(cards);
+
+    for (let card of cardsArr) {
+
+        if (!selectedCards.includes(card)) {
+
+            // console.log('card in both selectedCards and otherCards: ', card);
+
+            enableCard(card);
+        }
+    }
+
+}
+
+function blink() {
+    // console.log('executing blink()');
+    if (input.placeholder === 'Your name') {
+        input.placeholder = '';
+    } else {
+        input.placeholder = 'Your name';
+    }
+    setTimeout(blink, 1000);
+}
+
+function checkVisibility() {
+    let modalStyle = window.getComputedStyle(modalBox);
+    if (modalStyle.display === 'none') {
+        return;
+    } else {
+        blink();
+    }
 }

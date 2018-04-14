@@ -207,6 +207,17 @@ body {
     }
 }
 
+@keyframes blinking {
+    from,
+    49.9% {
+        opacity: 0;
+    }
+    50%,
+    to {
+        opacity: 1;
+    }
+}
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -236,6 +247,7 @@ body {
 }
 
 /*.bar__restart:hover,*/
+
 .modal__x:hover,
 .modal__btn:hover {
     cursor: pointer;
@@ -282,13 +294,11 @@ body {
 
 /* flip card on hover */
 
-
 /*
 .flip-container:hover {
     cursor: pointer;
 }
 */
-
 
 .flip-container.hover .flipper {
     -webkit-transform: rotateY(180deg);
@@ -297,7 +307,7 @@ body {
 
 .flip-container.hover-back .flipper {
     transform: rotateY(-180deg);
-} 
+}
 
 .flip-container,
 .card__front,
@@ -427,8 +437,8 @@ body {
 .span--hide,
 .card__letter {
     display: none;
-}
-*/
+}*/
+
 
 .no-pointer {
     pointer-events: none;
@@ -444,15 +454,6 @@ body {
 */
 
 .modal {
-    display: none;
-    /*
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-*/
-    z-index: 3;
     position: fixed;
     left: 0;
     top: 0;
@@ -466,25 +467,21 @@ body {
     box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
+.modal--win {
+    display: none;
+    /* display: block; */
+    z-index: 4;
+}
+
+.modal--rank {
+    display: none;
+    z-index: 3;
+}
+
 .modal__content {
-    width: 80%;
     height: 70%;
     border-radius: 0.5em;
-    -ms-flex-item-align: center;
-    align-self: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin: 5em auto;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
     background-color: #ddd;
-    padding: 1em;
     margin-left: auto;
     margin-right: auto;
     -webkit-animation-name: fadeIn;
@@ -500,6 +497,53 @@ body {
     box-shadow: 0 0 0 1px #000,
     0 0 0 10px #ad0000,
     0 0 0 1px #000;
+    margin: 5em auto;
+}
+
+.modal__content--win {
+    -ms-flex-item-align: center;
+    align-self: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+.modal__content--rank {
+    max-width: 95%;
+}
+
+.thead {
+    height: 40px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table,
+.th,
+.td{
+    padding: 1em;
+    font-size: 0.9em;
+    height: auto;
+}
+
+.th {
+    font-weight: 600;
+}
+
+.thead {
+    border-bottom: 1px solid #222;
+}
+
+.tr {
+    height: 10%;
 }
 
 .modal__header {
@@ -526,20 +570,58 @@ body {
 }
 
 .modal__text {
-    margin-top: 2em;
     text-align: center;
     color: #000;
 }
 
+.modal__user-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40%;
+}
+
+.modal__form {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+input[type="text"].form__input {
+    background: transparent;
+    width: auto;
+    border-bottom: 2px solid #222;
+}
+
+input[type="text"]::placeholder {
+    color: #222;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.form__submit {
+    border-radius: 6em;
+    padding: 0.5em;
+    background: transparent;
+    border: 2px solid #222;
+}
+
+.fa-arrow-right {
+    color: #222;
+}
+
+.modal__or {
+    text-align: center;
+}
+
 .modal__btn {
-    margin-top: 3em;
     padding: .5em;
     font-size: 1em;
     background: #009f00;
     color: #f5f5f5;
-    font-weight: 600;
     border-radius: 6px;
-    max-width: 100%;
     -ms-flex-item-align: center;
     align-self: center;
 }
@@ -591,7 +673,7 @@ body {
 @media screen and (min-width: 420px) {
     .header__title {
         font-size: 8.5em;
-    }    
+    }
     .header__subtitle {
         font-size: 2.5em;
     }
@@ -608,7 +690,6 @@ body {
         height: 7em;
     }
 }
-
 
 @media screen and (min-width: 650px) {
     .wrapper {
