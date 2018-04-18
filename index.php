@@ -38,6 +38,8 @@
             The audio is not supported
         </audio>
 
+        <pre class="php-input" id="php-input"></pre>
+
         <header class="header">
             <h1 class="header__title header__title--memory">
                 <span class="header__title--ki">Ki</span><span class="header__title--o">o</span><span- class="header__title--ku">Ku</span>
@@ -282,10 +284,25 @@
 
                     <div class="modal__user-action">
 
-                        <form class="modal__form">
-                            <input type="text" class="form__input" id="input" placeholder="Your name">
-                            <button class="form__submit fa fa-arrow-right" id="form-submit"></button>
+                       <!--  <form class="modal__form player__form" id="score-form">
+                           
+                            <input type="text" name="name" class="form__input form__input--name" id="input-name" placeholder="Your name">
+                        
+                            <input type="text" name="time" class="form__input form__input--time" id="input-time" placeholder="Your name">
+                        
+                            <input type="text" name="moves" class="form__input form__input--moves" id="input-moves" placeholder="Your name">
+                        
+                            <input type="text" name="stars" class="form__input form__input--stars" id="input-stars" placeholder="Your name">
+                        
+                            <input type="text" name="score" class="form__input form__input--score" id="input-score" placeholder="Your name">
+                        
+                            <button type="submit" form="score-form" value="" class="form__submit fa fa-arrow-right" id="form-submit"></button>
                         </form>
+                         -->
+                        
+                        <input type="text" name="name" class="input input--name" id="input-name" placeholder="Your name">
+
+                        <button type="button" value="" class="name-btn fa fa-arrow-right" id="name-btn"></button>
 
                         <p class="modal__or">
                             or
@@ -298,36 +315,23 @@
             </section>
             <!--PLAYERS RANK MODAL-->
             <section class="modal modal--rank" id="rank-modal">
-                <table class="modal__content modal__content--rank">
-                    <thead class="thead">
-                        <tr class="tr tr--titles">
-                            <th class="th th--position">Pos.</th>
-                            <th class="th th--name">Name</th>
-                            <th class="th th--time">Time</th>
-                            <th class="th th--moves">Moves</th>
-                            <th class="th th--stars">Stars</th>
-                            <th class="th th--final-score">Score</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody" id="tbody">
-                         <!-- TODO: APPEND PLAYER OBJECTS AS THEY GET CREATED -->
-                         <tr class="tr tr--new-player">
-                             <td class="td td--pos">1.</td>
-                             <td class="td td--name">X</td>
-                             <td class="td td--time">
-                                 00:00:20
-                             </td>
-                             <td class="td td--moves">
-                                 14
-                             </td>
-                             <td class="td td--stars">2</td>
-                             <td class="td td--score">Good</td>
-                         </tr>
-                    </tbody>
-
-                </table>
-               
-
+                <div  class="modal__content modal__content--rank">
+                    <table class="table">
+                        <thead class="thead">
+                            <tr class="tr tr--titles">
+                                <th class="th th--position">Pos.</th>
+                                <th class="th th--name">Name</th>
+                                <th class="th th--time">Time</th>
+                                <th class="th th--moves">Moves</th>
+                                <th class="th th--stars">Stars</th>
+                                <th class="th th--final-score">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody" id="tbody">
+                            <!-- TODO: APPEND PLAYER OBJECTS AS THEY GET CREATED -->
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
         </main>
@@ -335,7 +339,7 @@
     </div>
 
     <!-- JS file  -->
-    <script src="js/memory.js"></script>
+    <script src="js/logic.js"></script>
 </body>
 
 </html>

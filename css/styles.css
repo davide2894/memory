@@ -15,7 +15,7 @@ body,
     box-sizing: border-box;
 }
 
-table {
+.table {
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -439,7 +439,6 @@ body {
     display: none;
 }*/
 
-
 .no-pointer {
     pointer-events: none;
 }
@@ -448,7 +447,7 @@ body {
 /*
     -----------------------------------------
     -----------------------------------------
-                    MODAL
+                    MODALS
     -----------------------------------------
     -----------------------------------------
 */
@@ -469,7 +468,7 @@ body {
 
 .modal--win {
     display: none;
-    /* display: block; */
+    /*display: block;*/
     z-index: 4;
 }
 
@@ -480,6 +479,7 @@ body {
 
 .modal__content {
     height: 70%;
+    max-width: 90%;
     border-radius: 0.5em;
     background-color: #ddd;
     margin-left: auto;
@@ -498,6 +498,7 @@ body {
     0 0 0 10px #ad0000,
     0 0 0 1px #000;
     margin: 5em auto;
+    overflow: auto;
 }
 
 .modal__content--win {
@@ -514,21 +515,17 @@ body {
     padding: 1em;
 }
 
-.modal__content--rank {
-    max-width: 95%;
-}
-
 .thead {
     height: 40px;
 }
 
-table {
+.table {
     border-collapse: collapse;
 }
 
-table,
+.table,
 .th,
-.td{
+.td {
     padding: 1em;
     font-size: 0.9em;
     height: auto;
@@ -544,6 +541,15 @@ table,
 
 .tr {
     height: 10%;
+}
+
+.pos {
+    font-weight: 800;
+}
+
+.td {
+    font-size: 1.2em;
+    text-align: center;
 }
 
 .modal__header {
@@ -583,11 +589,12 @@ table,
 
 .modal__form {
     display: flex;
+    flex-direction: columns;
     justify-content: center;
     max-width: 100%;
 }
 
-input[type="text"].form__input {
+input[type="text"].input--name {
     background: transparent;
     width: auto;
     border-bottom: 2px solid #222;
@@ -597,11 +604,18 @@ input[type="text"]::placeholder {
     color: #222;
 }
 
+.form__input--time,
+.form__input--moves,
+.form__input--stars,
+.form__input--score {
+    display: none;
+}
+
 .hide {
     opacity: 0;
 }
 
-.form__submit {
+.name-btn{
     border-radius: 6em;
     padding: 0.5em;
     background: transparent;
@@ -637,6 +651,15 @@ input[type="text"]::placeholder {
     cursor: pointer;
 }
 
+.php-input {
+    color: #fff;
+    font-size: 2em;
+}
+
+.stop-scroll {
+    overflow: hidden;
+}
+
 /*
     -----------------------------------------
     -----------------------------------------
@@ -646,7 +669,7 @@ input[type="text"]::placeholder {
 */
 
 /*
-@media screen and (min-width: 350px) {
+@media screen and (min-width: ) {
 }
 */
 
@@ -655,8 +678,8 @@ input[type="text"]::placeholder {
         max-width: 45%;
     }
 
-    .modal__content {
-        max-width: 350px;
+    .modal__content--win {
+        max-width: 85%;
     }
 
     .modal__text {
@@ -689,6 +712,22 @@ input[type="text"]::placeholder {
         width: 7em;
         height: 7em;
     }
+
+    .modal__content--win {
+        max-width: 400px;
+    }
+}
+
+@media screen and (min-width: 520px) {
+    .modal__content {
+        overflow-x: hidden;
+    }
+    .modal__content--rank {
+        max-width: 95%;
+    }
+    .table {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 650px) {
@@ -700,6 +739,7 @@ input[type="text"]::placeholder {
     .card__front,
     .card__back {
         width: 8em;
-        height: 8em; //border-radius: 6em;
+        height: 8em;
+        border-radius: 8em;
     }
 }

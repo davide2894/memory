@@ -6,6 +6,8 @@
     })
 */
 
+// alert('check if broweserSync injects JS');
+
 // define variables
 const container = document.getElementById('container'),
     cards = container.getElementsByClassName('card'),
@@ -14,10 +16,13 @@ const container = document.getElementById('container'),
     modalBox = document.getElementById('win-modal'),
     modalX = document.getElementById('modal-x'),
     modalBtn = document.getElementById('modal-btn'),
-    input = document.getElementById('input'),
-    formSubmit = document.getElementById('form-submit'),
+    form = document.getElementById('score-form'),
+    input = document.getElementById('input-name'),
+    nameBtn = document.getElementById('name-btn'),
     modalRank = document.getElementById('rank-modal'),
-    tbody = document.getElementById('tbody');
+    tbody = document.getElementById('tbody'),
+    inputTime = document.getElementById('input-time'),
+    body = document.body;
 var moveCounter = document.getElementById('move-counter'),
     displayedTime = document.getElementById('displayed-time'),
     player,
@@ -45,16 +50,19 @@ var moveCounter = document.getElementById('move-counter'),
     restartBtn = document.getElementById('restart'),
     starNumber = 0,
     touchCount = 0,
-    cardBackSide = "";
-
+    cardBackSide = "",
+    phpInput = document.getElementById('php-input'),
+    xhr;
 
 shuffleCards();
+
+console.log(body.classList);
 
 for (let card of cards) {
 
     card.addEventListener('click', function () {
 
-        playPunchSound();
+        //playPunchSound();
 
         if (!gameStarted) {
 
@@ -182,6 +190,7 @@ for (let card of cards) {
 restartBtn.addEventListener('click', function () {
     restart();
 })
+
 
 function flipCard(element) {
     element.classList.add('hover');
@@ -350,6 +359,7 @@ function restart() {
     }
     matchedCards = [];
     */
+
     // reload page using browser cache
     window.location.reload(false);
 
@@ -371,42 +381,46 @@ function winGame() {
         playerFinalScore.textContent = 'You can do better';
     }
 
-    // on form btn click, create player object
-    formSubmit.addEventListener('click', function (e) {
-        modalBox.style.display = 'none';
-        modalRank.style.display = 'block';        
-        
-        // prevent to send data
-        e.preventDefault();
-        // store player name
-        playerName = input.value;
-
-        // test if it was stored
-        console.log(playerName);
-
-        // create constructor fn for player
-        player = new Player(playerName, playerTime.textContent, playerMoves.textContent, playerStars.textContent, playerFinalScore.textContent);
-
-        // console.log('player obj-> ', player);
-        
-        console.log(JSON.stringify(player));
-
-        /*
-        // add current player to rank
-        let newRow = document.createElement('tr');
-        newRow.innerHTML = `<tr class="tr tr--new-player"><td class="td td--pos">1.</td><td class="td td--name">${player.name}</td><td class="td td--time">${player.time}</td><td class="td td--moves">${player.moves}</td><td class="td td--stars">${player.stars}</td><td class="td td--score">${player.finalScore}</td></tr>`; 
-        
-        tbody.appendChild(newRow);
-        */
-
-        // TODO: switch from win modal to rank modal
-        
-    })
-
     modalBox.style.display = "block";
 
     // check if modal is visible: if so, trigger input placeholder animation 
     checkVisibility();
+
+    // on form btn click, create player object
+    nameBtn.addEventListener('click', function (e) {
+
+        // create instance of Player
+        player = new Player(playerName, playerTime.textContent, playerMoves.textContent, playerStars.textContent, playerFinalScore.textContent);
+
+        // assign player obj the name entered by user
+        player.name = input.value;
+
+        // console.log(player);
+
+
+        // use AJAX to send HTTP request
+        xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+
+                // phpInput.textContent = this.responseText;
+
+                tbody.insertAdjacentHTML('afterbegin', this.responseText);
+
+                modalBox.style.display = "none";
+                modalRank.style.display = 'block';
+            }
+        }
+
+        xhr.open('POST', 'input.php', true);
+
+        xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+
+        xhr.send(JSON.stringify(player));
+
+    })
+
 
     // reset on modal close
     document.addEventListener('click', function (event) {
@@ -528,10 +542,19 @@ function blink() {
 }
 
 function checkVisibility() {
-    let modalStyle = window.getComputedStyle(modalBox);
-    if (modalStyle.display === 'none') {
+
+    let modalWinStyle = window.getComputedStyle(modalBox);
+    let modalRankStyle = window.getComputedStyle(modalRank);
+
+    if(modalWinStyle.display === 'none' && modalRankStyle.display === 'none') {
         return;
+        if (body.hasClass('stop-scroll')) {
+            body.classList.remove('stop-scroll');
+        }
     } else {
         blink();
+        body.classList.add('stop-scroll');
     }
+    
+
 }

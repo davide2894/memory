@@ -560,8 +560,7 @@ If I think about it, to retrieve data from different browsers, from diff users, 
 8:43am - I found a way to implment this. I created a db. Now should:
 1. install lamp stack 
 2. setup phpmyadmin to manage db
-3. use php to take data from db and send it to javascript.
-   Kind of like it was made with Udacity Wall
+3. use php to take data from js and send it to db. Kind of like it was made with Udacity Wall
 4. handle received data w/js when button is clicked. 
 
 ***
@@ -577,3 +576,70 @@ Options are:
 
 ## Day 15 - Sat 14/4/18
 5:42am - ok. Ajax-php seems a better way to handle just this thing. it's one thing and I can use this opp to learn a bit of these two.
+
+9:58am - need to host a server online. Before doing that, let's make it work locally.
+
+So first thing is to connect to local server
+
+2:25pm - local server is live, php is running
+
+*********************************************
+## Day 16 - Sun 15/4/18
+6:02am - now should use use js send data with json and ajax to my php file
+
+7:01am - moved project folder to localhost folder and reconfigured gulp to act here. Now I can work interact w/php and js.
+
+**********************************************
+## Day 17 - Mon 16/4/18
+6:39am - I send object Object to server, server sends back nothing. This confirms the error being in the JSON sent from JS.
+
+
+*********************************************
+## Day 18 - Tue 17/4/18
+5:43am - a new day. Still trying to pass json and manipulate it in php.
+
+9:47am - oh my...The error was so simple...I was trying to send data to php while I was preventing the form from submitting any data at all. Of course php was returning nothing: it was receiving nothing. 
+
+Now the problem is another: send the data to the php file while preventing the page from refreshing.
+
+11:09am - changed index to php format. Now i'm sending data here, so I can read it and manipulate the db. Let's hope it works. TODO:
+* send player JSON
+* convert it to array
+* insert row in db
+* update html rank table with last db row
+
+
+*********************************************
+## Day 19 - Wed 18/4/18
+5:26am - ok. this is the 5th day I'm working on this feature. It's my first time dealing w/backedn so it's ok. No worry. Let's think. 
+
+I can send data via form i.e. server receives it and then I get back the response, which I show.
+
+6:37am - ok so I made it send something, find the file, and execute something. 
+
+Now the problem is that the responseText is the complete page's html.
+
+6:59am - ok that is solved. Now I need to manipulate incoming data to insert a new row in db
+
+8:40am - can add player data successfully. Now the question is: how can I put the score in such a way that I can select the top 10?
+
+Stop. Let's first display db rows in table
+
+10:56am - ok so now db rows display correctly in table. 
+Next: 
+1. make modal dimensions responsive
+2. make modal box scrollable
+
+12:24am - 1 and 2 done.
+Next is that when modals are displayed, body can't scroll.
+
+1:22pm: 
+    TODO: finish to add body stop scroll on modal display
+    
+added.
+
+TODO:
+* add animation on switch between modals
+* style scrollbar
+* find a way to sort player scores
+* add security against slq injections
